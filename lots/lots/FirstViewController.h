@@ -10,7 +10,12 @@
 #import "AFLotsAPIClient.h"
 #import "LocationManager.h"
 #import "Notifications.h"
+#import "ExploreLots.h"
 
 @interface FirstViewController : UIViewController
+
+
+@property(nonatomic, strong) IBOutlet UITableView *lotExploreTable;
+@property(nonatomic, strong) NSArray *lotArray;
 
 @end

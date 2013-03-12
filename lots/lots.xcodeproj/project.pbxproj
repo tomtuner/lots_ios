@@ -40,6 +40,7 @@
 		E9B2F11416EE61C000976D0E /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2F11316EE61C000976D0E /* LocationManager.m */; };
 		E9B2F11616EE661900976D0E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9B2F11516EE661900976D0E /* CoreLocation.framework */; };
 		E9B2F11A16EE6B0B00976D0E /* Notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2F11916EE6B0B00976D0E /* Notifications.m */; };
+		E9B2F11D16EFB30900976D0E /* ExploreLots.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2F11C16EFB30900976D0E /* ExploreLots.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +98,8 @@
 		E9B2F11516EE661900976D0E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E9B2F11816EE6B0B00976D0E /* Notifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notifications.h; sourceTree = "<group>"; };
 		E9B2F11916EE6B0B00976D0E /* Notifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Notifications.m; sourceTree = "<group>"; };
+		E9B2F11B16EFB30900976D0E /* ExploreLots.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExploreLots.h; sourceTree = "<group>"; };
+		E9B2F11C16EFB30900976D0E /* ExploreLots.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExploreLots.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +245,8 @@
 			children = (
 				E9B2F10E16EE5DD100976D0E /* AFLotsAPIClient.h */,
 				E9B2F10F16EE5DD100976D0E /* AFLotsAPIClient.m */,
+				E9B2F11B16EFB30900976D0E /* ExploreLots.h */,
+				E9B2F11C16EFB30900976D0E /* ExploreLots.m */,
 			);
 			name = networking;
 			sourceTree = "<group>";
@@ -354,6 +359,7 @@
 				E9B2F11016EE5DD100976D0E /* AFLotsAPIClient.m in Sources */,
 				E9B2F11416EE61C000976D0E /* LocationManager.m in Sources */,
 				E9B2F11A16EE6B0B00976D0E /* Notifications.m in Sources */,
+				E9B2F11D16EFB30900976D0E /* ExploreLots.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
