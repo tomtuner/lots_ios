@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ExploreLots.h"
+#import "FirstViewController.h"
+#import "CheckInViewController.h"
 
 @interface SecondViewController : UIViewController
+
+@property(nonatomic, strong) IBOutlet UICollectionView *lotCollectionView;
+@property(nonatomic, strong) NSMutableArray *lotArray;
 
 @end

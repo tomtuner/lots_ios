@@ -41,6 +41,13 @@
 		E9B2F11616EE661900976D0E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9B2F11516EE661900976D0E /* CoreLocation.framework */; };
 		E9B2F11A16EE6B0B00976D0E /* Notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2F11916EE6B0B00976D0E /* Notifications.m */; };
 		E9B2F11D16EFB30900976D0E /* ExploreLots.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2F11C16EFB30900976D0E /* ExploreLots.m */; };
+		E9B2F12116EFFD2700976D0E /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2F12016EFFD2700976D0E /* MBProgressHUD.m */; };
+		E9B2F12316EFFF0700976D0E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9B2F12216EFFF0700976D0E /* QuartzCore.framework */; };
+		E9B2F12716F01E6200976D0E /* CheckInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2F12516F01E6200976D0E /* CheckInViewController.m */; };
+		E9B2F12816F01E6200976D0E /* CheckInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9B2F12616F01E6200976D0E /* CheckInViewController.xib */; };
+		E9B2F12A16F0206100976D0E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9B2F12916F0206100976D0E /* MapKit.framework */; };
+		E9B2F12E16F030A000976D0E /* LotAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2F12D16F030A000976D0E /* LotAnnotation.m */; };
+		E9B2F13116F0418500976D0E /* CheckInLot.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2F13016F0418500976D0E /* CheckInLot.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +107,17 @@
 		E9B2F11916EE6B0B00976D0E /* Notifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Notifications.m; sourceTree = "<group>"; };
 		E9B2F11B16EFB30900976D0E /* ExploreLots.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExploreLots.h; sourceTree = "<group>"; };
 		E9B2F11C16EFB30900976D0E /* ExploreLots.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExploreLots.m; sourceTree = "<group>"; };
+		E9B2F11F16EFFD2700976D0E /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		E9B2F12016EFFD2700976D0E /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		E9B2F12216EFFF0700976D0E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E9B2F12416F01E6200976D0E /* CheckInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckInViewController.h; sourceTree = "<group>"; };
+		E9B2F12516F01E6200976D0E /* CheckInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInViewController.m; sourceTree = "<group>"; };
+		E9B2F12616F01E6200976D0E /* CheckInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckInViewController.xib; sourceTree = "<group>"; };
+		E9B2F12916F0206100976D0E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		E9B2F12C16F030A000976D0E /* LotAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LotAnnotation.h; sourceTree = "<group>"; };
+		E9B2F12D16F030A000976D0E /* LotAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LotAnnotation.m; sourceTree = "<group>"; };
+		E9B2F12F16F0418500976D0E /* CheckInLot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckInLot.h; sourceTree = "<group>"; };
+		E9B2F13016F0418500976D0E /* CheckInLot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInLot.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +125,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9B2F12A16F0206100976D0E /* MapKit.framework in Frameworks */,
+				E9B2F12316EFFF0700976D0E /* QuartzCore.framework in Frameworks */,
 				E9B2F11616EE661900976D0E /* CoreLocation.framework in Frameworks */,
 				E9B2F09616EE4C6100976D0E /* UIKit.framework in Frameworks */,
 				E9B2F09816EE4C6100976D0E /* Foundation.framework in Frameworks */,
@@ -138,6 +158,8 @@
 		E9B2F09416EE4C6100976D0E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E9B2F12916F0206100976D0E /* MapKit.framework */,
+				E9B2F12216EFFF0700976D0E /* QuartzCore.framework */,
 				E9B2F11516EE661900976D0E /* CoreLocation.framework */,
 				E9B2F09516EE4C6100976D0E /* UIKit.framework */,
 				E9B2F09716EE4C6100976D0E /* Foundation.framework */,
@@ -149,6 +171,7 @@
 		E9B2F09B16EE4C6100976D0E /* lots_source */ = {
 			isa = PBXGroup;
 			children = (
+				E9B2F12B16F0308E00976D0E /* maps */,
 				E9B2F11716EE6B0200976D0E /* common */,
 				E9B2F11116EE61B800976D0E /* location */,
 				E9B2F10D16EE5D7500976D0E /* networking */,
@@ -166,6 +189,9 @@
 				E9B2F0BB16EE4C6100976D0E /* FirstViewController.xib */,
 				E9B2F0BE16EE4C6100976D0E /* SecondViewController.xib */,
 				E9B2F09C16EE4C6100976D0E /* Supporting Files */,
+				E9B2F12416F01E6200976D0E /* CheckInViewController.h */,
+				E9B2F12516F01E6200976D0E /* CheckInViewController.m */,
+				E9B2F12616F01E6200976D0E /* CheckInViewController.xib */,
 			);
 			name = lots_source;
 			path = lots;
@@ -174,6 +200,7 @@
 		E9B2F09C16EE4C6100976D0E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E9B2F11E16EFFD1700976D0E /* MBProgressHUD */,
 				E9B2F0F016EE5A7C00976D0E /* AFNetworking */,
 				E9B2F09D16EE4C6100976D0E /* lots-Info.plist */,
 				E9B2F09E16EE4C6100976D0E /* InfoPlist.strings */,
@@ -247,6 +274,8 @@
 				E9B2F10F16EE5DD100976D0E /* AFLotsAPIClient.m */,
 				E9B2F11B16EFB30900976D0E /* ExploreLots.h */,
 				E9B2F11C16EFB30900976D0E /* ExploreLots.m */,
+				E9B2F12F16F0418500976D0E /* CheckInLot.h */,
+				E9B2F13016F0418500976D0E /* CheckInLot.m */,
 			);
 			name = networking;
 			sourceTree = "<group>";
@@ -267,6 +296,24 @@
 				E9B2F11916EE6B0B00976D0E /* Notifications.m */,
 			);
 			name = common;
+			sourceTree = "<group>";
+		};
+		E9B2F11E16EFFD1700976D0E /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				E9B2F11F16EFFD2700976D0E /* MBProgressHUD.h */,
+				E9B2F12016EFFD2700976D0E /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		E9B2F12B16F0308E00976D0E /* maps */ = {
+			isa = PBXGroup;
+			children = (
+				E9B2F12C16F030A000976D0E /* LotAnnotation.h */,
+				E9B2F12D16F030A000976D0E /* LotAnnotation.m */,
+			);
+			name = maps;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,6 +378,7 @@
 				E9B2F0BD16EE4C6100976D0E /* FirstViewController.xib in Resources */,
 				E9B2F0C016EE4C6100976D0E /* SecondViewController.xib in Resources */,
 				E9B2F0CC16EE54EF00976D0E /* didact_gothic.ttf in Resources */,
+				E9B2F12816F01E6200976D0E /* CheckInViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +408,10 @@
 				E9B2F11416EE61C000976D0E /* LocationManager.m in Sources */,
 				E9B2F11A16EE6B0B00976D0E /* Notifications.m in Sources */,
 				E9B2F11D16EFB30900976D0E /* ExploreLots.m in Sources */,
+				E9B2F12116EFFD2700976D0E /* MBProgressHUD.m in Sources */,
+				E9B2F12716F01E6200976D0E /* CheckInViewController.m in Sources */,
+				E9B2F12E16F030A000976D0E /* LotAnnotation.m in Sources */,
+				E9B2F13116F0418500976D0E /* CheckInLot.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,6 +542,7 @@
 				E9B2F0C516EE4C6100976D0E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

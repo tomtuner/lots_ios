@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "LocationManager.h"
 #import "Theme.h"
+#import "CheckInViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate>
 

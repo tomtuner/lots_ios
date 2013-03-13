@@ -10,17 +10,26 @@
 #import "LocationManager.h"
 #import "AFLotsAPIClient.h"
 
-@interface ExploreLots : NSObject
+#define kExploreLotName @"LSExploreLotName"
+#define kExploreLotID @"LSExploreLotID"
+#define kExploreLotLatitude @"LSExploreLotLatitude"
+#define kExploreLotLongitude @"LSExploreLotLongitude"
+#define kExploreLotDistance @"LSexploreLostDistance"
+#define kExploreLotStatus @"LSExploreLotStatus"
+#define kExploreLotAverageOccupancy @"LSExploreLotAverageOccupancy"
+#define kExploreLotPast @"LSExploreLotPast"
 
-@property (readonly) NSUInteger lotID;
-@property (readonly) float latitude;
-@property (readonly) float longitude;
-@property (readonly) NSString *name;
-@property (readonly) float distance;
-@property (readonly) NSDictionary *status;
-@property (readonly) float averageOccupancy;
-@property (readonly) NSArray *past;
+@interface ExploreLots : NSObject <NSCoding>
+
+@property (nonatomic, assign) int lotID;
+@property (nonatomic, assign) float latitude;
+@property (nonatomic, assign) float longitude;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, assign) float distance;
+@property (nonatomic, strong) NSDictionary *status;
+@property (nonatomic, assign) float averageOccupancy;
+@property (nonatomic, strong) NSMutableArray *past;
 
 - (id)initWithAttributes:(NSDictionary *)attributes;
-+ (void)globalExploreLotsWithBlock:(void (^)(NSArray *posts, NSError *error))block;
++ (void)globalExploreLotsWithBlock:(void (^)(NSArray *lots, NSError *error))block;
 @end

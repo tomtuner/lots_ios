@@ -16,9 +16,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
-    
-    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     [self setupInitialTabBarController];
@@ -37,6 +34,28 @@
     UIViewController *viewController2 = [[SecondViewController alloc] initWithNibName:@"SecondViewController" bundle:nil];
     self.tabBarController = [[UITabBarController alloc] init];
     self.tabBarController.viewControllers = @[viewController1, viewController2];
+}
+
+-(void) motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
+{
+    if (motion == UIEventSubtypeMotionShake) {
+        NSLog(@"Shook Phone!!!!");
+        NSArray *closestLots;
+        @try {
+    		NSString *documentsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                                          NSUserDomainMask, YES) objectAtIndex:0];
+            NSLog(@"Scan Data Archive String: %@", LSAllLotsArchiveString);
+			NSString *archivePath = [documentsDir stringByAppendingPathComponent:LSAllLotsArchiveString];
+			closestLots = [NSKeyedUnarchiver unarchiveObjectWithFile:archivePath];
+		}
+		@catch (...)
+		{
+            NSLog(@"Exception unarchiving file.");
+    	}
+        CheckInViewController *checkIn = [[CheckInViewController alloc] initWithNibName:@"CheckInViewController" bundle:nil];
+        checkIn.lot = [closestLots objectAtIndex:0];
+        [self.window.rootViewController presentViewController:checkIn animated:YES completion:nil];
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
