@@ -16,6 +16,8 @@
 #import "MBProgressHUD.h"
 #import "LotAnnotation.h"
 #import "CheckInViewController.h"
+#import "LSExploreLotCell.h"
+#import "LotDetailViewController.h"
 
 #define REFRESH_HEADER_HEIGHT 52.0f
 

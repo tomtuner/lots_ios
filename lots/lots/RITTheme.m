@@ -30,9 +30,19 @@
     return [UIColor lightGrayColor];
 }
 
+- (UIColor *)mainBlueColor
+{
+    return [UIColor colorWithRed:(0.2431372549) green:(0.3176470588) blue:(0.6039215686) alpha:1.0];
+}
+
+- (UIColor *)mainGrayColor
+{
+    return [UIColor colorWithRed:(0.2235294118) green:(0.2235294118) blue:(0.2235294118) alpha:1.0];
+}
+
 - (UIColor *)baseTintColor
 {
-    return [self ritOrangeColor];
+    return [self mainGrayColor];
 }
 
 - (UIColor *)accentTintColor
@@ -93,7 +103,7 @@
         name = [name stringByAppendingString:@"Landscape"];
     }
     UIImage *image = [UIImage imageNamed:name];
-    image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(0.0, 8.0, 0.0, 8.0)];
+    image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)];
     return image;
 }
 
@@ -315,7 +325,7 @@
 
 - (UIImage *)tabBarBackground
 {
-    return [UIImage imageNamed:@"tabBarBackground"];
+    return [[UIImage imageNamed:@"LotsTabBarBackground"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0) resizingMode:UIImageResizingModeTile];
 }
 
 - (UIImage *)tabBarSelectionIndicator
@@ -325,7 +335,7 @@
 
 - (UIFont *) customFontWithSize:(CGFloat)fontSize
 {
-    return [UIFont fontWithName:@"Linear" size:fontSize];
+    return [UIFont fontWithName:@"DidactGothic" size:fontSize];
 }
 /*- (UIImage *)imageForTab:(SSThemeTab)tab
 {

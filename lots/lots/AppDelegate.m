@@ -21,9 +21,9 @@
     [self setupInitialTabBarController];
     self.window.rootViewController = self.tabBarController;
     
-//    [ThemeManager customizeAppAppearance];
+    [ThemeManager customizeAppAppearance];
     [[LocationManager sharedLocationManager] startUpdates];
-    
+
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -31,9 +31,11 @@
 - (void) setupInitialTabBarController
 {
     UIViewController *viewController1 = [[FirstViewController alloc] initWithNibName:@"FirstViewController" bundle:nil];
+    UINavigationController *navCont = [[UINavigationController alloc] initWithRootViewController:viewController1];
+    [navCont setNavigationBarHidden:YES];
     UIViewController *viewController2 = [[SecondViewController alloc] initWithNibName:@"SecondViewController" bundle:nil];
     self.tabBarController = [[UITabBarController alloc] init];
-    self.tabBarController.viewControllers = @[viewController1, viewController2];
+    self.tabBarController.viewControllers = @[navCont, viewController2];
 }
 
 -(void) motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event

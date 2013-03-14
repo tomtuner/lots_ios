@@ -22,7 +22,8 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
     if (self) {
         self.title = NSLocalizedString(@"Explore", @"explore tab");
         self.tabBarItem.image = [UIImage imageNamed:@"first"];
-        
+        self.mapView = [[MKMapView alloc] initWithFrame:self.view.window.bounds];
+        self.mapView.tag = 100;
         @try {
     		NSString *documentsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                                           NSUserDomainMask, YES) objectAtIndex:0];
@@ -38,15 +39,15 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
         if (!lotArray) {
 			lotArray = [[NSMutableArray alloc] init];
         }
-        NSLog(@"Lot Array: %@", lotArray);
+//        NSLog(@"Lot Array: %@", lotArray);
         [self setupStrings];
+//        self.lotExploreTable.separatorStyle = UITableViewCellSeparatorStyleSingleLineEtched;
+//        self.lotExploreTable.separatorColor = [UIColor greenColor];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                 selector:@selector(locationUpdated)
                                                     name:LSLocationManagerDidUpdateLocationNotification
                                                   object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceDidRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
-
     }
     return self;
 }
@@ -63,7 +64,11 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
             return;
         case UIDeviceOrientationPortrait:
             [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
-            [self.mapView removeFromSuperview];
+            if ([self.view.window viewWithTag:100]) {
+                [self.mapView removeFromSuperview];
+            }else {
+                return;
+            }
             break;
         case UIDeviceOrientationPortraitUpsideDown:
             break;
@@ -71,21 +76,27 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
             rotation = M_PI_2;
             statusBarOrientation = UIInterfaceOrientationLandscapeRight;
             [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
-            [self.mapView setFrame:CGRectMake(self.view.window.bounds.origin.x, self.view.bounds.origin.y, self.view.window.bounds.size.width, self.view.window.bounds.size.height)];
-            [self.view.window addSubview:self.mapView];
+//            [self.mapView setFrame:self.view.window.bounds];
+            if (![self.view.window viewWithTag:100]) {
+                [self.view.window addSubview:self.mapView];
+            }else {
+                return;
+            }
             break;
         case UIDeviceOrientationLandscapeRight:
             rotation = -M_PI_2;
             statusBarOrientation = UIInterfaceOrientationLandscapeLeft;
             [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
-            [self.mapView setFrame:CGRectMake(self.view.window.bounds.origin.x, self.view.window.bounds.origin.y, self.view.window.bounds.size.width, self.view.window.bounds.size.height)];
-            [self.view.window addSubview:self.mapView];
+//            [self.mapView setFrame:self.view.window.bounds];
+            if (![self.view.window viewWithTag:100]) {
+                [self.view.window addSubview:self.mapView];
+            }
             break;
     }
     CGAffineTransform transform = CGAffineTransformMakeRotation(rotation);
     [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         [self.mapView setTransform:transform];
-        [self.mapView setFrame:CGRectMake(self.view.window.bounds.origin.x, self.view.window.bounds.origin.y, self.view.window.bounds.size.width, self.view.window.bounds.size.height)];
+        [self.mapView setFrame:self.view.window.bounds];
     } completion:^(BOOL finished) {
         [self plotLotPositions];
     }];
@@ -93,28 +104,27 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
 
 - (void)plotLotPositions {
     
-    for (id<MKAnnotation> annotation in _mapView.annotations) {
-        [_mapView removeAnnotation:annotation];
+    for (id<MKAnnotation> annotation in self.mapView.annotations) {
+        [self.mapView removeAnnotation:annotation];
     }
-    
+    NSLog(@"Lot info: %@", [[lotArray objectAtIndex:0] description]);
+
     CLLocationCoordinate2D zoomLocation;
     zoomLocation.latitude = [[lotArray objectAtIndex:0] latitude];
     zoomLocation.longitude= [[lotArray objectAtIndex:0] longitude];
     // 2
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
-    // 3
-    MKCoordinateRegion adjustedRegion = [_mapView regionThatFits:viewRegion];
-    // 4
-    [_mapView setRegion:adjustedRegion animated:YES];
+    MKCoordinateRegion adjustedRegion = [self.mapView regionThatFits:viewRegion];
+    [self.mapView setRegion:adjustedRegion animated:YES];
     
     CLLocationCoordinate2D coordinate;
     for (ExploreLots *tempLot in lotArray) {
         coordinate.latitude = tempLot.latitude;
         coordinate.longitude = tempLot.longitude;
         LotAnnotation *annotation = [[LotAnnotation alloc] initWithName:tempLot.name address:nil coordinate:coordinate] ;
-        [_mapView addAnnotation:annotation];
+        [self.mapView addAnnotation:annotation];
     }
-    
+//    [self.mapView setShowsUserLocation:YES];
 }
 
 - (void) locationUpdated
@@ -143,10 +153,10 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
     [ExploreLots globalExploreLotsWithBlock:^(NSArray *lots, NSError *error) {
        
         if (!error) {
-            NSLog(@"In Lots");
+//            NSLog(@"In Lots");
             [lotArray removeAllObjects];
             for( NSObject *lot in lots ) {
-                NSLog(@"Object description: %@", [lot description]);
+//                NSLog(@"Object description: %@", [lot description]);
                 [lotArray addObject:lot];
             }
             [[self lotExploreTable] reloadData];
@@ -160,6 +170,12 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
         
         [self performSelector:@selector(closeHUDDisplay) withObject:nil afterDelay:2.0];
     }];
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 - (void)viewDidLoad
@@ -177,6 +193,55 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
     
     // Add Pull to refresh to Table View
     [self addPullToRefreshHeader];
+    [self addLeftSwipeGesture];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceDidRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
+
+
+
+}
+
+-(void) addLeftSwipeGesture
+{
+    UISwipeGestureRecognizer *leftGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(selectRightTab)];
+    leftGesture.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.lotExploreTable addGestureRecognizer:leftGesture];
+}
+
+-(void) selectRightTab
+{
+//    [self.tabBarController setSelectedIndex:self.tabBarController.selectedIndex + 1];
+    
+    // Get the views.
+    UIView * fromView = self.tabBarController.selectedViewController.view;
+    UIView * toView = [[self.tabBarController.viewControllers objectAtIndex:self.tabBarController.selectedIndex+1] view];
+    
+    // Get the size of the view area.
+    CGRect viewSize = fromView.frame;
+    BOOL scrollRight = self.tabBarController.selectedIndex+1 > self.tabBarController.selectedIndex;
+    
+    // Add the to view to the tab bar view.
+    [fromView.superview addSubview:toView];
+    
+    // Position it off screen.
+    toView.frame = CGRectMake((scrollRight ? 320 : -320), viewSize.origin.y, 320, viewSize.size.height);
+    
+    [UIView animateWithDuration:0.3
+                     animations: ^{
+                         
+                         // Animate the views on and off the screen. This will appear to slide.
+                         fromView.frame =CGRectMake((scrollRight ? -320 : 320), viewSize.origin.y, 320, viewSize.size.height);
+                         toView.frame =CGRectMake(0, viewSize.origin.y, 320, viewSize.size.height);
+                     }
+     
+                     completion:^(BOOL finished) {
+                         if (finished) {
+                             
+                             // Remove the old view from the tabbar view.
+                             [fromView removeFromSuperview];
+                             self.tabBarController.selectedIndex = self.tabBarController.selectedIndex+1;
+                         }
+                     }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -264,7 +329,8 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
     [UIView commitAnimations];
     
     // Refresh View of Parking Lots
-    [self refreshLots];
+//    [self refreshLots];
+    [[LocationManager sharedLocationManager] startUpdates];
 }
 
 - (void)setupStrings{
@@ -309,7 +375,7 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
     NSLog(@"Array Count: %i", [lotArray count]);
 	return [lotArray count];
 }
-
+/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LSExploreCell"];
@@ -324,11 +390,53 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
     //	NSMutableDictionary *scanSession = [scanHistory objectAtIndex:indexPath.section];
     //	ZXResult *barcode = [scanHistory objectAtIndex:indexPath.row];
     ExploreLots *exLots = [lotArray objectAtIndex:indexPath.row];
-    NSLog(@"Lot Name: %@", exLots.name);
+//    NSLog(@"Lot Name: %@", exLots.name);
     cell.textLabel.text = exLots.name;
     cell.detailTextLabel.text = [[NSNumber numberWithFloat:exLots.averageOccupancy] stringValue];
+    [cell setBackgroundColor:[UIColor colorWithRed:0.8784313725 green:0.8784313725 blue:0.7764705882 alpha:1.0]];
 	
     return cell;
+}
+*/
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Navigation logic may go here. Create and push another view controller.
+    
+    LotDetailViewController *detailViewController = [[LotDetailViewController alloc] initWithNibName:@"LotDetailViewController" withLot:[lotArray objectAtIndex:[indexPath row]]];
+
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    LSExploreLotCell *customCell = (LSExploreLotCell *)[tableView dequeueReusableCellWithIdentifier:@"LSExploreCell"];
+    if (customCell == nil) {
+        customCell = [[LSExploreLotCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LSExploreCell"];
+        NSArray *topLevel;
+        topLevel = [[NSBundle mainBundle] loadNibNamed:@"LSExploreLotCell" owner:self options:nil];
+        for (id currentObject in topLevel) {
+            if ([currentObject isKindOfClass:[UITableViewCell class]]) {
+                customCell = (LSExploreLotCell *) currentObject;
+                break;
+            }
+        }
+    }
+    
+    [customCell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    
+    customCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    ExploreLots *exLots = [lotArray objectAtIndex:indexPath.row];
+    //    NSLog(@"Lot Name: %@", exLots.name);
+    customCell.lotName.text = exLots.name;
+    customCell.lotOccupancy.text = [NSString stringWithFormat:@"%@%%",[[NSNumber numberWithFloat:exLots.averageOccupancy] stringValue]];
+//    cell.detailTextLabel.text = [[NSNumber numberWithFloat:exLots.averageOccupancy] stringValue];
+//    [cell setBackgroundColor:[UIColor colorWithRed:0.8784313725 green:0.8784313725 blue:0.7764705882 alpha:1.0]];
+	
+    return customCell;
 }
 
 @end

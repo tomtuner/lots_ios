@@ -26,6 +26,8 @@
     _averageOccupancy = [[_status valueForKeyPath:@"avg_occ"] floatValue];
     _past = [_status valueForKeyPath:@"past"];
     
+//    NSLog(@"Past Count: %@", [_past objectAtIndex:0]);
+    
     return self;
 }
 
@@ -91,7 +93,7 @@
 
 - (NSString*) description
 {
-    return [NSString stringWithFormat:@"ID: %i, Name: %@, Status: %@, Past: %@", self.lotID, self.name, self.status, self.past];
+    return [NSString stringWithFormat:@"ID: %i, Latitude: %f, Longitude: %f, Name: %@, Status: %@, Past: %@", self.lotID, self.latitude, self.longitude, self.name, self.status, self.past];
 }
 
 @end
