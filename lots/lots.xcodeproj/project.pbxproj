@@ -16,6 +16,15 @@
 		E975C81916F24AEC00AF4AB6 /* back_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C81716F24AEC00AF4AB6 /* back_arrow@2x.png */; };
 		E975C81C16F2D3D900AF4AB6 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C81A16F2D3D900AF4AB6 /* Icon.png */; };
 		E975C81D16F2D3D900AF4AB6 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C81B16F2D3D900AF4AB6 /* Icon@2x.png */; };
+		E975C82016F3638D00AF4AB6 /* LotMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E975C81F16F3638D00AF4AB6 /* LotMapViewController.m */; };
+		E975C82416F37E6000AF4AB6 /* MapLotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E975C82216F37E6000AF4AB6 /* MapLotViewController.m */; };
+		E975C82516F37E6000AF4AB6 /* MapLotViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E975C82316F37E6000AF4AB6 /* MapLotViewController.xib */; };
+		E975C82C16F3B79100AF4AB6 /* gray_button.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C82A16F3B79100AF4AB6 /* gray_button.png */; };
+		E975C82D16F3B79100AF4AB6 /* gray_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C82B16F3B79100AF4AB6 /* gray_button@2x.png */; };
+		E975C83016F3C15A00AF4AB6 /* magnifier.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C82E16F3C15A00AF4AB6 /* magnifier.png */; };
+		E975C83116F3C15A00AF4AB6 /* magnifier@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C82F16F3C15A00AF4AB6 /* magnifier@2x.png */; };
+		E975C83416F3C3E500AF4AB6 /* flag.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C83216F3C3E500AF4AB6 /* flag.png */; };
+		E975C83516F3C3E500AF4AB6 /* flag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C83316F3C3E500AF4AB6 /* flag@2x.png */; };
 		E9B2F09616EE4C6100976D0E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9B2F09516EE4C6100976D0E /* UIKit.framework */; };
 		E9B2F09816EE4C6100976D0E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9B2F09716EE4C6100976D0E /* Foundation.framework */; };
 		E9B2F09A16EE4C6100976D0E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9B2F09916EE4C6100976D0E /* CoreGraphics.framework */; };
@@ -74,6 +83,17 @@
 		E975C81716F24AEC00AF4AB6 /* back_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_arrow@2x.png"; sourceTree = "<group>"; };
 		E975C81A16F2D3D900AF4AB6 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		E975C81B16F2D3D900AF4AB6 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		E975C81E16F3638D00AF4AB6 /* LotMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LotMapViewController.h; sourceTree = "<group>"; };
+		E975C81F16F3638D00AF4AB6 /* LotMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LotMapViewController.m; sourceTree = "<group>"; };
+		E975C82116F37E6000AF4AB6 /* MapLotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapLotViewController.h; sourceTree = "<group>"; };
+		E975C82216F37E6000AF4AB6 /* MapLotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapLotViewController.m; sourceTree = "<group>"; };
+		E975C82316F37E6000AF4AB6 /* MapLotViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapLotViewController.xib; sourceTree = "<group>"; };
+		E975C82A16F3B79100AF4AB6 /* gray_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gray_button.png; sourceTree = "<group>"; };
+		E975C82B16F3B79100AF4AB6 /* gray_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gray_button@2x.png"; sourceTree = "<group>"; };
+		E975C82E16F3C15A00AF4AB6 /* magnifier.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnifier.png; sourceTree = "<group>"; };
+		E975C82F16F3C15A00AF4AB6 /* magnifier@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "magnifier@2x.png"; sourceTree = "<group>"; };
+		E975C83216F3C3E500AF4AB6 /* flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag.png; sourceTree = "<group>"; };
+		E975C83316F3C3E500AF4AB6 /* flag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flag@2x.png"; sourceTree = "<group>"; };
 		E9B2F09216EE4C6100976D0E /* lots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9B2F09516EE4C6100976D0E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E9B2F09716EE4C6100976D0E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -248,6 +268,12 @@
 		E9B2F0C816EE512700976D0E /* lots_resources */ = {
 			isa = PBXGroup;
 			children = (
+				E975C83216F3C3E500AF4AB6 /* flag.png */,
+				E975C83316F3C3E500AF4AB6 /* flag@2x.png */,
+				E975C82E16F3C15A00AF4AB6 /* magnifier.png */,
+				E975C82F16F3C15A00AF4AB6 /* magnifier@2x.png */,
+				E975C82A16F3B79100AF4AB6 /* gray_button.png */,
+				E975C82B16F3B79100AF4AB6 /* gray_button@2x.png */,
 				E975C81A16F2D3D900AF4AB6 /* Icon.png */,
 				E975C81B16F2D3D900AF4AB6 /* Icon@2x.png */,
 				E975C81616F24AEC00AF4AB6 /* back_arrow.png */,
@@ -357,6 +383,11 @@
 			children = (
 				E9B2F12C16F030A000976D0E /* LotAnnotation.h */,
 				E9B2F12D16F030A000976D0E /* LotAnnotation.m */,
+				E975C81E16F3638D00AF4AB6 /* LotMapViewController.h */,
+				E975C81F16F3638D00AF4AB6 /* LotMapViewController.m */,
+				E975C82116F37E6000AF4AB6 /* MapLotViewController.h */,
+				E975C82216F37E6000AF4AB6 /* MapLotViewController.m */,
+				E975C82316F37E6000AF4AB6 /* MapLotViewController.xib */,
 			);
 			name = maps;
 			sourceTree = "<group>";
@@ -434,6 +465,13 @@
 				E975C81916F24AEC00AF4AB6 /* back_arrow@2x.png in Resources */,
 				E975C81C16F2D3D900AF4AB6 /* Icon.png in Resources */,
 				E975C81D16F2D3D900AF4AB6 /* Icon@2x.png in Resources */,
+				E975C82516F37E6000AF4AB6 /* MapLotViewController.xib in Resources */,
+				E975C82C16F3B79100AF4AB6 /* gray_button.png in Resources */,
+				E975C82D16F3B79100AF4AB6 /* gray_button@2x.png in Resources */,
+				E975C83016F3C15A00AF4AB6 /* magnifier.png in Resources */,
+				E975C83116F3C15A00AF4AB6 /* magnifier@2x.png in Resources */,
+				E975C83416F3C3E500AF4AB6 /* flag.png in Resources */,
+				E975C83516F3C3E500AF4AB6 /* flag@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +508,8 @@
 				E9B2F13416F0FE8000976D0E /* LSExploreLotCell.m in Sources */,
 				E9B2F13A16F172C700976D0E /* LotDetailViewController.m in Sources */,
 				E975C81316F2274F00AF4AB6 /* LSCheckInCell.m in Sources */,
+				E975C82016F3638D00AF4AB6 /* LotMapViewController.m in Sources */,
+				E975C82416F37E6000AF4AB6 /* MapLotViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

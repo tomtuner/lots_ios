@@ -23,6 +23,8 @@
 
 @property(nonatomic, strong) IBOutlet MKMapView *mapView;
 
+@property(nonatomic, strong) IBOutlet UILabel *titleLabel;
+
 // Table View properties for pull to refresh
 @property (nonatomic, retain) UIView *refreshHeaderView;
 @property (nonatomic, retain) UILabel *refreshLabel;

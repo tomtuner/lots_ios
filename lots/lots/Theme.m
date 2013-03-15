@@ -83,8 +83,8 @@
     [searchBarAppearance setScopeBarButtonDividerImage:[theme searchScopeButtonDivider] forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal];
     
     UIButton *buttonAppearance = [UIButton appearance];
-    [buttonAppearance setTitleColor:[theme mainColor] forState:UIControlStateNormal];
-    [buttonAppearance setTitleColor:[theme baseTintColor] forState:UIControlStateHighlighted];
+//    [buttonAppearance setTitleColor:[theme mainColor] forState:UIControlStateNormal];
+//    [buttonAppearance setTitleColor:[theme baseTintColor] forState:UIControlStateHighlighted];
     
     UISlider *sliderAppearance = [UISlider appearance];
     [sliderAppearance setThumbImage:[theme sliderThumbForState:UIControlStateNormal] forState:UIControlStateNormal];
@@ -148,7 +148,7 @@
     if (baseTintColor) {
         [navigationBarAppearance setTintColor:baseTintColor];
 //        [barButtonItemAppearance setTintColor:baseTintColor];
-        [buttonAppearance setTintColor:baseTintColor];
+//        [buttonAppearance setTintColor:baseTintColor];
         [segmentedAppearance setTintColor:baseTintColor];
         [tabBarAppearance setTintColor:baseTintColor];
         [toolbarAppearance setTintColor:baseTintColor];
@@ -175,7 +175,7 @@
 + (void) customizeLabelWithCustomFont:(UILabel *)label
 {
     id <Theme> theme = [self sharedTheme];
-    UIFont *font = [theme customFontWithSize:18.0f];
+    UIFont *font = [theme customFontWithSize:24.0f];
     label.font = font;
 }
 
@@ -184,6 +184,14 @@
     id <Theme> theme = [self sharedTheme];
     UIFont *font = [theme customFontWithSize:18.0f];
     button.titleLabel.font = font;
+}
+
++ (void) customizeButtonWithGrayBackground:(UIButton *)button
+{
+//    UIImage *redButtonImage = [UIImage imageNamed:@"gray_button"];
+    UIImage *redButtonImage = [[UIImage imageNamed:@"gray_button"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 15, 0, 15) resizingMode:UIImageResizingModeTile];
+    
+    [button setBackgroundImage:redButtonImage forState:UIControlStateNormal];
 }
 
 + (void)customizeTableView:(UITableView *)tableView

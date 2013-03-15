@@ -57,8 +57,16 @@
     self.navigationItem.title = self.lot.name;
     [self.navBar pushNavigationItem:self.navigationItem animated:NO];
     self.navigationItem.leftBarButtonItem = cancelButton;
-    
+    [ThemeManager customizeButtonWithGrayBackground:self.fullButton];
     [self setupButtons];
+    self.mapView.layer.masksToBounds = NO;
+    self.mapView.layer.cornerRadius = 3.0f;
+    self.mapView.layer.shadowOpacity = 1.0f;
+    self.mapView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+    self.mapView.layer.shadowOffset = CGSizeMake(0.0f, 5.0f);
+    self.mapView.layer.shadowRadius = 5.0f;
+    UIBezierPath *path = [UIBezierPath bezierPathWithRect:self.mapView.bounds];
+    self.mapView.layer.shadowPath = path.CGPath;
 }
 
 -(void) setupButtons
@@ -68,7 +76,7 @@
     for (UIButton *tempButton in _buttonArray) {
         tempButton.selected = NO;
         //            [tempButton setTintColor:[UIColor greenColor]];
-        [tempButton setBackgroundColor:[UIColor greenColor]];
+//        [tempButton setBackgroundColor:[UIColor greenColor]];
     }
 }
 

@@ -21,9 +21,9 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = NSLocalizedString(@"Explore", @"explore tab");
-        self.tabBarItem.image = [UIImage imageNamed:@"first"];
-        self.mapView = [[MKMapView alloc] initWithFrame:self.view.window.bounds];
-        self.mapView.tag = 100;
+        self.tabBarItem.image = [UIImage imageNamed:@"magnifier"];
+//        self.mapView = [[MKMapView alloc] initWithFrame:self.view.window.bounds];
+//        self.mapView.tag = 100;
         @try {
     		NSString *documentsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                                           NSUserDomainMask, YES) objectAtIndex:0];
@@ -43,7 +43,7 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
         [self setupStrings];
 //        self.lotExploreTable.separatorStyle = UITableViewCellSeparatorStyleSingleLineEtched;
 //        self.lotExploreTable.separatorColor = [UIColor greenColor];
-        
+        self.mapController = [[MapLotViewController alloc] initWithNibName:@"MapLotViewController" bundle:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                 selector:@selector(locationUpdated)
                                                     name:LSLocationManagerDidUpdateLocationNotification
@@ -64,11 +64,14 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
             return;
         case UIDeviceOrientationPortrait:
             [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
-            if ([self.view.window viewWithTag:100]) {
-                [self.mapView removeFromSuperview];
-            }else {
-                return;
-            }
+//            if ([self.view.window viewWithTag:100]) {
+//                [self.mapView removeFromSuperview];
+//            }else {
+//                return;
+//            }
+            
+//            [self presentViewController:self.mapController animated:NO completion:nil];
+            [self.presentedViewController dismissViewControllerAnimated:NO completion:nil];
             break;
         case UIDeviceOrientationPortraitUpsideDown:
             break;
@@ -76,29 +79,33 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
             rotation = M_PI_2;
             statusBarOrientation = UIInterfaceOrientationLandscapeRight;
             [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
-//            [self.mapView setFrame:self.view.window.bounds];
-            if (![self.view.window viewWithTag:100]) {
-                [self.view.window addSubview:self.mapView];
-            }else {
-                return;
-            }
+////            [self.mapView setFrame:self.view.window.bounds];
+//            if (![self.view.window viewWithTag:100]) {
+//                [self.view.window addSubview:self.mapView];
+//            }else {
+//                return;
+//            }
+            [self presentViewController:self.mapController animated:NO completion:nil];
+
             break;
         case UIDeviceOrientationLandscapeRight:
             rotation = -M_PI_2;
             statusBarOrientation = UIInterfaceOrientationLandscapeLeft;
             [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
 //            [self.mapView setFrame:self.view.window.bounds];
-            if (![self.view.window viewWithTag:100]) {
-                [self.view.window addSubview:self.mapView];
-            }
+//            if (![self.view.window viewWithTag:100]) {
+//                [self.view.window addSubview:self.mapView];
+//            }
+            [self presentViewController:self.mapController animated:NO completion:nil];
+
             break;
     }
     CGAffineTransform transform = CGAffineTransformMakeRotation(rotation);
     [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-        [self.mapView setTransform:transform];
-        [self.mapView setFrame:self.view.window.bounds];
+//        [self.mapView setTransform:transform];
+//        [self.mapView setFrame:self.view.window.bounds];
     } completion:^(BOOL finished) {
-        [self plotLotPositions];
+//        [self plotLotPositions];
     }];
 }
 
@@ -130,6 +137,7 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
 - (void) locationUpdated
 {
     [self refreshLots];
+    self.mapController.lotArray = lotArray;
 }
 
 - (void) refreshLots
@@ -192,8 +200,8 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
     [_HUD show:YES];
     
     // Add Pull to refresh to Table View
-    [self addPullToRefreshHeader];
-    [self addLeftSwipeGesture];
+//    [self addPullToRefreshHeader];
+//    [self addLeftSwipeGesture];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceDidRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
 

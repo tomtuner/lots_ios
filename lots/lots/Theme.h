@@ -84,6 +84,7 @@
 + (void)customizeTableView:(UITableView *)tableView;
 + (void) customizeLabelWithCustomFont:(UILabel *)label;
 + (void) customizeButtonWithCustomFont:(UIButton *)button;
++ (void) customizeButtonWithGrayBackground:(UIButton *)button;
 
 //+ (void)customizeTabBarItem:(UITabBarItem *)item forTab:(SSThemeTab)tab;
 

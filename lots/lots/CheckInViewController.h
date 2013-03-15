@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import <QuartzCore/QuartzCore.h>
 #import "ExploreLots.h"
 #import "LotAnnotation.h"
 #import "CheckInLot.h"
+#import "Theme.h"
 
 #define METERS_PER_MILE 1609.344
 

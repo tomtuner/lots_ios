@@ -19,7 +19,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = NSLocalizedString(@"Check-in", @"check-ing tab");
-        self.tabBarItem.image = [UIImage imageNamed:@"second"];
+        self.tabBarItem.image = [UIImage imageNamed:@"flag"];
         self.mapView = [[MKMapView alloc] init];
         self.mapView.tag = 101;
         @try {
@@ -63,9 +63,10 @@
 	// Do any additional setup after loading the view, typically from a nib.
 //    [self.lotCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"LSCollectionViewCell"];
 
-    [self addRightSwipeGesture];
+//    [self addRightSwipeGesture];
     [self.lotCollectionView registerClass:[LSCheckInCell class] forCellWithReuseIdentifier:@"LSCheckInCell"];
 
+    [ThemeManager customizeLabelWithCustomFont:self.titleLabel];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceDidRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
 }
 

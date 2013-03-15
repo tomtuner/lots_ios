@@ -18,7 +18,7 @@
 #import "CheckInViewController.h"
 #import "LSExploreLotCell.h"
 #import "LotDetailViewController.h"
-
+#import "MapLotViewController.h"
 #define REFRESH_HEADER_HEIGHT 52.0f
 
 FOUNDATION_EXPORT NSString *const LSAllLotsArchiveString;
@@ -35,6 +35,8 @@ FOUNDATION_EXPORT NSString *const LSAllLotsArchiveString;
 @property(nonatomic, strong) IBOutlet MKMapView *mapView;
 
 @property (nonatomic, retain) MBProgressHUD *HUD;
+
+@property(nonatomic, strong) MapLotViewController *mapController;
 
 // Table View properties for pull to refresh
 @property (nonatomic, retain) UIView *refreshHeaderView;
