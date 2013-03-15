@@ -35,10 +35,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view from its nib.
     self.lotName.text = self.lot.name;
+    self.title = self.lot.name;
     self.lotOccupancy = [NSString stringWithFormat:@"%@ %%", [NSNumber numberWithFloat:self.lot.averageOccupancy]];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+    self.navigationItem.leftBarButtonItem = [self backBarButtonItem];
+}
+
+- (UIBarButtonItem *)backBarButtonItem {
+    // create button
+    UIImage* image3 = [UIImage imageNamed:@"back_arrow"];
+    CGRect frameimg = CGRectMake(20, 0, image3.size.width, image3.size.height);
+    UIButton *backButton = [[UIButton alloc] initWithFrame:frameimg];
+    [backButton setBackgroundImage:image3 forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(backButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    // create button item -- possible because UIButton subclasses UIView!
+    UIBarButtonItem* backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    return backItem;
+}
+
+- (void)backButtonPressed:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning

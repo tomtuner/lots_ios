@@ -432,7 +432,8 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
     ExploreLots *exLots = [lotArray objectAtIndex:indexPath.row];
     //    NSLog(@"Lot Name: %@", exLots.name);
     customCell.lotName.text = exLots.name;
-    customCell.lotOccupancy.text = [NSString stringWithFormat:@"%@%%",[[NSNumber numberWithFloat:exLots.averageOccupancy] stringValue]];
+    customCell.lotOccupancy.text = [NSString stringWithFormat:@"%@%%",[[NSNumber numberWithFloat:exLots.estimatedOccupancy] stringValue]];
+    customCell.lotDistance.text = [NSString stringWithFormat:@"%.2f mi", (exLots.distance * 0.621371)];
 //    cell.detailTextLabel.text = [[NSNumber numberWithFloat:exLots.averageOccupancy] stringValue];
 //    [cell setBackgroundColor:[UIColor colorWithRed:0.8784313725 green:0.8784313725 blue:0.7764705882 alpha:1.0]];
 	

@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		E975C80C16F1A30800AF4AB6 /* LotsTabBarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C80B16F1A30800AF4AB6 /* LotsTabBarBackground@2x.png */; };
 		E975C80E16F1A39300AF4AB6 /* LotsTabBarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C80D16F1A39300AF4AB6 /* LotsTabBarBackground.png */; };
+		E975C81016F221A800AF4AB6 /* LotsTabBarSelectedBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C80F16F221A800AF4AB6 /* LotsTabBarSelectedBG@2x.png */; };
+		E975C81316F2274F00AF4AB6 /* LSCheckInCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E975C81216F2274F00AF4AB6 /* LSCheckInCell.m */; };
+		E975C81516F2275F00AF4AB6 /* LSCheckInCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E975C81416F2275F00AF4AB6 /* LSCheckInCell.xib */; };
+		E975C81816F24AEC00AF4AB6 /* back_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C81616F24AEC00AF4AB6 /* back_arrow.png */; };
+		E975C81916F24AEC00AF4AB6 /* back_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C81716F24AEC00AF4AB6 /* back_arrow@2x.png */; };
+		E975C81C16F2D3D900AF4AB6 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C81A16F2D3D900AF4AB6 /* Icon.png */; };
+		E975C81D16F2D3D900AF4AB6 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C81B16F2D3D900AF4AB6 /* Icon@2x.png */; };
 		E9B2F09616EE4C6100976D0E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9B2F09516EE4C6100976D0E /* UIKit.framework */; };
 		E9B2F09816EE4C6100976D0E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9B2F09716EE4C6100976D0E /* Foundation.framework */; };
 		E9B2F09A16EE4C6100976D0E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9B2F09916EE4C6100976D0E /* CoreGraphics.framework */; };
@@ -59,6 +66,14 @@
 /* Begin PBXFileReference section */
 		E975C80B16F1A30800AF4AB6 /* LotsTabBarBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LotsTabBarBackground@2x.png"; path = "lots/LotsTabBarBackground@2x.png"; sourceTree = "<group>"; };
 		E975C80D16F1A39300AF4AB6 /* LotsTabBarBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LotsTabBarBackground.png; path = lots/LotsTabBarBackground.png; sourceTree = "<group>"; };
+		E975C80F16F221A800AF4AB6 /* LotsTabBarSelectedBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LotsTabBarSelectedBG@2x.png"; path = "lots/LotsTabBarSelectedBG@2x.png"; sourceTree = "<group>"; };
+		E975C81116F2274F00AF4AB6 /* LSCheckInCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSCheckInCell.h; sourceTree = "<group>"; };
+		E975C81216F2274F00AF4AB6 /* LSCheckInCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSCheckInCell.m; sourceTree = "<group>"; };
+		E975C81416F2275F00AF4AB6 /* LSCheckInCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSCheckInCell.xib; sourceTree = "<group>"; };
+		E975C81616F24AEC00AF4AB6 /* back_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_arrow.png; sourceTree = "<group>"; };
+		E975C81716F24AEC00AF4AB6 /* back_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_arrow@2x.png"; sourceTree = "<group>"; };
+		E975C81A16F2D3D900AF4AB6 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		E975C81B16F2D3D900AF4AB6 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		E9B2F09216EE4C6100976D0E /* lots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9B2F09516EE4C6100976D0E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E9B2F09716EE4C6100976D0E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -233,8 +248,13 @@
 		E9B2F0C816EE512700976D0E /* lots_resources */ = {
 			isa = PBXGroup;
 			children = (
+				E975C81A16F2D3D900AF4AB6 /* Icon.png */,
+				E975C81B16F2D3D900AF4AB6 /* Icon@2x.png */,
+				E975C81616F24AEC00AF4AB6 /* back_arrow.png */,
+				E975C81716F24AEC00AF4AB6 /* back_arrow@2x.png */,
 				E975C80D16F1A39300AF4AB6 /* LotsTabBarBackground.png */,
 				E975C80B16F1A30800AF4AB6 /* LotsTabBarBackground@2x.png */,
+				E975C80F16F221A800AF4AB6 /* LotsTabBarSelectedBG@2x.png */,
 				E9B2F0C916EE512F00976D0E /* fonts */,
 			);
 			name = lots_resources;
@@ -258,6 +278,9 @@
 				E9B2F13216F0FE8000976D0E /* LSExploreLotCell.h */,
 				E9B2F13316F0FE8000976D0E /* LSExploreLotCell.m */,
 				E9B2F13516F0FE9200976D0E /* LSExploreLotCell.xib */,
+				E975C81116F2274F00AF4AB6 /* LSCheckInCell.h */,
+				E975C81216F2274F00AF4AB6 /* LSCheckInCell.m */,
+				E975C81416F2275F00AF4AB6 /* LSCheckInCell.xib */,
 			);
 			name = visual;
 			sourceTree = "<group>";
@@ -405,6 +428,12 @@
 				E9B2F13B16F172C700976D0E /* LotDetailViewController.xib in Resources */,
 				E975C80C16F1A30800AF4AB6 /* LotsTabBarBackground@2x.png in Resources */,
 				E975C80E16F1A39300AF4AB6 /* LotsTabBarBackground.png in Resources */,
+				E975C81016F221A800AF4AB6 /* LotsTabBarSelectedBG@2x.png in Resources */,
+				E975C81516F2275F00AF4AB6 /* LSCheckInCell.xib in Resources */,
+				E975C81816F24AEC00AF4AB6 /* back_arrow.png in Resources */,
+				E975C81916F24AEC00AF4AB6 /* back_arrow@2x.png in Resources */,
+				E975C81C16F2D3D900AF4AB6 /* Icon.png in Resources */,
+				E975C81D16F2D3D900AF4AB6 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,6 +469,7 @@
 				E9B2F13116F0418500976D0E /* CheckInLot.m in Sources */,
 				E9B2F13416F0FE8000976D0E /* LSExploreLotCell.m in Sources */,
 				E9B2F13A16F172C700976D0E /* LotDetailViewController.m in Sources */,
+				E975C81316F2274F00AF4AB6 /* LSCheckInCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

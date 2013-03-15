@@ -24,6 +24,7 @@
     _distance = [[attributes valueForKeyPath:@"distance"] floatValue];
     _status = [attributes valueForKeyPath:@"status"];
     _averageOccupancy = [[_status valueForKeyPath:@"avg_occ"] floatValue];
+    _estimatedOccupancy = [[_status valueForKeyPath:@"est_occ"] floatValue];
     _past = [_status valueForKeyPath:@"past"];
     
 //    NSLog(@"Past Count: %@", [_past objectAtIndex:0]);
@@ -75,6 +76,7 @@
         self.distance = [coder decodeFloatForKey:kExploreLotDistance];
         self.status = [coder decodeObjectForKey:kExploreLotStatus];
         self.averageOccupancy = [coder decodeFloatForKey:kExploreLotAverageOccupancy];
+        self.estimatedOccupancy = [coder decodeFloatForKey:kExploreLotEstimatedOccupancy];
         self.past = [coder decodeObjectForKey:kExploreLotPast];
     }
     return self;
@@ -88,6 +90,7 @@
     [coder encodeFloat:self.distance forKey:kExploreLotDistance];
     [coder encodeObject:self.status forKey:kExploreLotStatus];
     [coder encodeFloat:self.averageOccupancy forKey:kExploreLotAverageOccupancy];
+    [coder encodeFloat:self.estimatedOccupancy forKey:kExploreLotEstimatedOccupancy];
     [coder encodeObject:self.past forKey:kExploreLotPast];
 }
 

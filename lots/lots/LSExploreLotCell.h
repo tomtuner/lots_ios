@@ -13,5 +13,7 @@
 
 @property(nonatomic, strong) IBOutlet UILabel *lotName;
 @property(nonatomic, strong) IBOutlet UILabel *lotOccupancy;
+@property(nonatomic, strong) IBOutlet UILabel *lotDistance;
+
 
 @end

@@ -11,6 +11,7 @@
 #import "ExploreLots.h"
 #import "FirstViewController.h"
 #import "CheckInViewController.h"
+#import "LSCheckInCell.h"
 
 @interface SecondViewController : UIViewController {
     BOOL isDragging;

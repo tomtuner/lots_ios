@@ -17,6 +17,7 @@
 #define kExploreLotDistance @"LSexploreLostDistance"
 #define kExploreLotStatus @"LSExploreLotStatus"
 #define kExploreLotAverageOccupancy @"LSExploreLotAverageOccupancy"
+#define kExploreLotEstimatedOccupancy @"LSExploreLotEstimatedOccupancy"
 #define kExploreLotPast @"LSExploreLotPast"
 
 @interface ExploreLots : NSObject <NSCoding>
@@ -28,6 +29,7 @@
 @property (nonatomic, assign) float distance;
 @property (nonatomic, strong) NSDictionary *status;
 @property (nonatomic, assign) float averageOccupancy;
+@property (nonatomic, assign) float estimatedOccupancy;
 @property (nonatomic, strong) NSMutableArray *past;
 
 - (id)initWithAttributes:(NSDictionary *)attributes;

@@ -45,9 +45,14 @@
     return [self mainGrayColor];
 }
 
+- (UIColor *)mainYellowColor
+{
+    return [UIColor colorWithRed:(1.0) green:(0.9215686275) blue:(0.3058823529) alpha:1.0];
+}
+
 - (UIColor *)accentTintColor
 {
-    return nil;
+    return [self mainYellowColor];
 }
 
 - (UIColor *)ritOrangeColor {
@@ -126,7 +131,7 @@
 
 - (UIImage *)backBackgroundForState:(UIControlState)state barMetrics:(UIBarMetrics)barMetrics
 {
-    NSString *name = @"backButton";
+    NSString *name = @"back_arrow";
     if (barMetrics == UIBarMetricsLandscapePhone) {
         name = [name stringByAppendingString:@"Landscape"];
     }
@@ -134,7 +139,7 @@
         name = [name stringByAppendingString:@"Highlighted"];
     }
     UIImage *image = [UIImage imageNamed:name];
-    image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(0.0, 21.0, 0.0, 13.0)];
+//    image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(0.0, 21.0, 0.0, 13.0)];
     return image;
 }
 
@@ -330,7 +335,8 @@
 
 - (UIImage *)tabBarSelectionIndicator
 {
-    return [UIImage imageNamed:@"tabBarSelectionIndicator"];
+//    return [[UIImage imageNamed:@"LotsTabBarSelectedBG"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 2, 0, 2)];
+    return nil;
 }
 
 - (UIFont *) customFontWithSize:(CGFloat)fontSize

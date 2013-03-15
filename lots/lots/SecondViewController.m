@@ -37,6 +37,10 @@
         if (!lotArray) {
 			lotArray = [[NSMutableArray alloc] init];
         }
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(locationUpdated)
+                                                     name:LSLocationManagerDidUpdateLocationNotification
+                                                   object:nil];
     }
     return self;
 }
@@ -47,14 +51,21 @@
 //    [self refreshLots];
     [[LocationManager sharedLocationManager] startUpdates];
 }
+
+- (void) locationUpdated
+{
+    [self refreshLots];
+}
 							
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    [self.lotCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"LSCollectionViewCell"];
+//    [self.lotCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"LSCollectionViewCell"];
 
     [self addRightSwipeGesture];
+    [self.lotCollectionView registerClass:[LSCheckInCell class] forCellWithReuseIdentifier:@"LSCheckInCell"];
+
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceDidRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
 }
 
@@ -105,6 +116,10 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(NSUInteger) supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -342,7 +357,7 @@
 // 3
 - (UIEdgeInsets)collectionView:
 (UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(50, 20, 50, 20);
+    return UIEdgeInsetsMake(75, 20, 75, 20);
 }
 
 #pragma mark - UICollectionView Datasource
@@ -356,7 +371,7 @@
 }
 // 3
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"LSCollectionViewCell" forIndexPath:indexPath];
+    /*UICollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"LSCheckInCell" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height) ];
     ExploreLots *lot = [lotArray objectAtIndex:indexPath.row];
@@ -370,7 +385,30 @@
 //                                      reuseIdentifier:@"LSExploreCell"];
 //        //        cell.selectionStyle = UITableViewCellSelectionStyleNone;
 //    }
-    return cell;
+    return cell;*/
+    
+    LSCheckInCell *customCell = (LSCheckInCell *)[cv dequeueReusableCellWithReuseIdentifier:@"LSCheckInCell" forIndexPath:indexPath];
+//    if (customCell == nil) {
+//        customCell = [[LSCheckInCell alloc] init];
+//        NSArray *topLevel;
+//        topLevel = [[NSBundle mainBundle] loadNibNamed:@"LSCheckInCell" owner:self options:nil];
+//        for (id currentObject in topLevel) {
+//            if ([currentObject isKindOfClass:[UITableViewCell class]]) {
+//                customCell = (LSCheckInCell *) currentObject;
+//                break;
+//            }
+//        }
+//    }
+    
+//    [customCell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    
+//    customCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    ExploreLots *exLots = [lotArray objectAtIndex:indexPath.row];
+    //    NSLog(@"Lot Name: %@", exLots.name);
+    customCell.nameLabel.text = exLots.name;
+	
+    return customCell;
 }
 
 @end
