@@ -13,6 +13,8 @@
 #import "LotAnnotation.h"
 #import "CheckInLot.h"
 #import "Theme.h"
+#import "AchievementsViewController.h"
+#import "AppDelegate.h"
 
 #define METERS_PER_MILE 1609.344
 

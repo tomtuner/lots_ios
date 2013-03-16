@@ -12,7 +12,7 @@
 
 - (UIColor *)mainColor
 {
-    return [UIColor whiteColor];
+    return [UIColor blackColor];
 }
 
 - (UIColor *)highlightColor
@@ -22,7 +22,7 @@
 
 - (UIColor *)shadowColor
 {
-    return nil;
+    return [self mainWhiteColor];
 }
 
 - (UIColor *)backgroundColor
@@ -42,12 +42,17 @@
 
 - (UIColor *)baseTintColor
 {
-    return [self mainGrayColor];
+    return [self mainYellowColor];
 }
 
 - (UIColor *)mainYellowColor
 {
     return [UIColor colorWithRed:(1.0) green:(0.9215686275) blue:(0.3058823529) alpha:1.0];
+}
+
+- (UIColor *)mainWhiteColor
+{
+    return [UIColor colorWithRed:(0.968627451) green:(0.9607843137) blue:(0.9607843137) alpha:1.0];
 }
 
 - (UIColor *)accentTintColor
@@ -88,7 +93,7 @@
 
 - (CGSize)shadowOffset
 {
-    return CGSizeMake(1.0, 1.0);
+    return CGSizeMake(0.0, 0.0);
 }
 
 - (UIImage *)topShadow
@@ -103,9 +108,9 @@
 
 - (UIImage *)navigationBackgroundForBarMetrics:(UIBarMetrics)metrics
 {
-    NSString *name = @"navigationBackground";
+    NSString *name = @"navBG";
     if (metrics == UIBarMetricsLandscapePhone) {
-        name = [name stringByAppendingString:@"Landscape"];
+//        name = [name stringByAppendingString:@"Landscape"];
     }
     UIImage *image = [UIImage imageNamed:name];
     image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)];

@@ -49,7 +49,6 @@
 {
     [super viewWillAppear:animated];
 //    [self refreshLots];
-    [[LocationManager sharedLocationManager] startUpdates];
 }
 
 - (void) locationUpdated
@@ -63,11 +62,16 @@
 	// Do any additional setup after loading the view, typically from a nib.
 //    [self.lotCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"LSCollectionViewCell"];
 
-//    [self addRightSwipeGesture];
+    [self addRightSwipeGesture];
     [self.lotCollectionView registerClass:[LSCheckInCell class] forCellWithReuseIdentifier:@"LSCheckInCell"];
-
+    
+    UIImage *navCenter = [UIImage imageNamed:@"navCenter"];
+    UIImageView *titleView = [[UIImageView alloc] initWithImage:navCenter];
+    [self.navigationController.navigationBar.topItem setTitleView:titleView];
+    
     [ThemeManager customizeLabelWithCustomFont:self.titleLabel];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceDidRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
+    [[LocationManager sharedLocationManager] startUpdates];
 }
 
 -(void) addRightSwipeGesture

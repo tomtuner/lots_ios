@@ -17,4 +17,8 @@
 
 @property (strong, nonatomic) UITabBarController *tabBarController;
 
+//@property (assign, nonatomic) BOOL shouldShowAchievement;
+
+-(void) showAchievementViewWithCount:(int) count;
+
 @end

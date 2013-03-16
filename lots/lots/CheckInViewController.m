@@ -57,7 +57,7 @@
     self.navigationItem.title = self.lot.name;
     [self.navBar pushNavigationItem:self.navigationItem animated:NO];
     self.navigationItem.leftBarButtonItem = cancelButton;
-    [ThemeManager customizeButtonWithGrayBackground:self.fullButton];
+//    [ThemeManager customizeButtonWithGrayBackground:self.fullButton];
     [self setupButtons];
     self.mapView.layer.masksToBounds = NO;
     self.mapView.layer.cornerRadius = 3.0f;
@@ -77,6 +77,18 @@
         tempButton.selected = NO;
         //            [tempButton setTintColor:[UIColor greenColor]];
 //        [tempButton setBackgroundColor:[UIColor greenColor]];
+        [tempButton setBackgroundColor:[[ThemeManager sharedTheme] mainGrayColor]];
+        tempButton.layer.masksToBounds = NO;
+        tempButton.layer.cornerRadius = 3.0f;
+        tempButton.layer.shadowOpacity = 1.0f;
+        tempButton.layer.shadowColor = [UIColor blackColor].CGColor;
+        tempButton.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
+        tempButton.layer.shadowRadius = 2.0f;
+        UIBezierPath *path = [UIBezierPath bezierPathWithRect:tempButton.bounds];
+        tempButton.layer.shadowPath = path.CGPath;
+        
+        [tempButton.titleLabel setAlpha:1.0f];
+        [tempButton setAlpha:0.2f];
     }
 }
 
@@ -88,10 +100,14 @@
         if (selected.tag != tempButton.tag) {
             tempButton.selected = NO;
 //            [tempButton setTintColor:[UIColor greenColor]];
-            [tempButton setBackgroundColor:[UIColor greenColor]];
+//            [tempButton setBackgroundColor:[UIColor greenColor]];
+            [tempButton setAlpha:0.2f];
+            [tempButton.titleLabel setAlpha:1.0f];
         }else {
             tempButton.selected = YES;
-            [tempButton setBackgroundColor:[UIColor grayColor]];
+//            [tempButton setBackgroundColor:[UIColor grayColor]];
+            [tempButton setAlpha:1.0f];
+            [tempButton.titleLabel setAlpha:1.0f];
 //            [tempButton setTintColor:[UIColor grayColor]];
         }
     }
@@ -111,7 +127,7 @@
     
     [CheckInLot globalCheckInToLotWithLotID:self.lot.lotID withOccupancy:occupancySelected withBlock:^(NSArray *lot, NSError *error) {
         if (!error) {
-            [self dismissView];
+            [self dismissViewWithAchievementCheck];
         }
     }];
 }
@@ -126,6 +142,25 @@
 {
     [self.checkInButton setAlpha:0.4];
     [self.checkInButton setEnabled:NO];
+}
+
+
+-(void) dismissViewWithAchievementCheck
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    int count = [defaults integerForKey:@"checkInCount"];
+    count++;
+    [defaults setInteger:count forKey:@"checkInCount"];
+    [defaults synchronize];
+    
+    if (count == 1 || count == 5 || count == 10) {
+        [self dismissViewControllerAnimated:YES completion:^(void) {
+            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            [appDelegate showAchievementViewWithCount:count];
+        }];
+    }else {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 -(void) dismissView

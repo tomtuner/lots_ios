@@ -34,7 +34,7 @@
     [navigationBarAppearance setBackgroundImage:[theme navigationBackgroundForBarMetrics:UIBarMetricsLandscapePhone] forBarMetrics:UIBarMetricsLandscapePhone];
     [navigationBarAppearance setShadowImage:[theme topShadow]];
     
-//    UIBarButtonItem *barButtonItemAppearance = [UIBarButtonItem appearance];
+    UIBarButtonItem *barButtonItemAppearance = [UIBarButtonItem appearance];
     /*
     [barButtonItemAppearance setBackgroundImage:[theme barButtonBackgroundForState:UIControlStateNormal style:UIBarButtonItemStyleBordered barMetrics:UIBarMetricsDefault] forState:UIControlStateNormal style:UIBarButtonItemStyleBordered barMetrics:UIBarMetricsDefault];
     [barButtonItemAppearance setBackgroundImage:[theme barButtonBackgroundForState:UIControlStateHighlighted style:UIBarButtonItemStyleBordered barMetrics:UIBarMetricsDefault] forState:UIControlStateHighlighted style:UIBarButtonItemStyleBordered barMetrics:UIBarMetricsDefault];
@@ -115,22 +115,25 @@
     */
     NSMutableDictionary *titleTextAttributes = [[NSMutableDictionary alloc] init];
     UIColor *mainColor = [theme mainColor];
+//    UIColor *mainColor = nil;
     if (mainColor) {
         [titleTextAttributes setObject:mainColor forKey:UITextAttributeTextColor];
     }
     UIColor *shadowColor = [theme shadowColor];
+//    UIColor *shadowColor = nil;
     if (shadowColor) {
         [titleTextAttributes setObject:shadowColor forKey:UITextAttributeTextShadowColor];
         CGSize shadowOffset = [theme shadowOffset];
         [titleTextAttributes setObject:[NSValue valueWithCGSize:shadowOffset] forKey:UITextAttributeTextShadowOffset];
     }
-    UIFont *font = [theme customFontWithSize:22.0f];
+//    UIFont *font = [theme customFontWithSize:22.0f];
+    UIFont *font = nil;
     if (font) {
         [titleTextAttributes setObject:font forKey:UITextAttributeFont];
     }
 
     [navigationBarAppearance setTitleTextAttributes:titleTextAttributes];
-//    [barButtonItemAppearance setTitleTextAttributes:titleTextAttributes forState:UIControlStateNormal];
+    [barButtonItemAppearance setTitleTextAttributes:titleTextAttributes forState:UIControlStateNormal];
 //    [barButtonItemAppearance setTitleTextAttributes:titleTextAttributes forState:UIControlStateHighlighted];
     [segmentedAppearance setTitleTextAttributes:titleTextAttributes forState:UIControlStateNormal];
     [searchBarAppearance setScopeBarButtonTitleTextAttributes:titleTextAttributes forState:UIControlStateNormal];

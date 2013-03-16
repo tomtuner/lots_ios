@@ -29,8 +29,36 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceDidRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
     [self plotLotPositions];
 }
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:YES];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)deviceDidRotate:(NSNotification *)notification
+{
+    UIDeviceOrientation currentOrientation = [[UIDevice currentDevice] orientation];
+    switch (currentOrientation) {
+        case UIDeviceOrientationFaceDown:
+        case UIDeviceOrientationFaceUp:
+        case UIDeviceOrientationUnknown:
+            return;
+        case UIDeviceOrientationPortrait:
+                [self dismissViewControllerAnimated:NO completion:nil];
+            break;
+        case UIDeviceOrientationPortraitUpsideDown:
+            break;
+        case UIDeviceOrientationLandscapeLeft:
+            break;
+        case UIDeviceOrientationLandscapeRight:
+            break;
+    }
+}
+
 
 - (void)plotLotPositions {
     

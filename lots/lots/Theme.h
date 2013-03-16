@@ -9,6 +9,8 @@
 @protocol Theme <NSObject>
 
 - (UIColor *)mainColor;
+- (UIColor *)mainGrayColor;
+
 - (UIColor *)highlightColor;
 - (UIColor *)shadowColor;
 - (UIColor *)backgroundColor;

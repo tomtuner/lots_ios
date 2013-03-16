@@ -63,7 +63,6 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
         case UIDeviceOrientationUnknown:
             return;
         case UIDeviceOrientationPortrait:
-            [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
 //            if ([self.view.window viewWithTag:100]) {
 //                [self.mapView removeFromSuperview];
 //            }else {
@@ -71,32 +70,48 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
 //            }
             
 //            [self presentViewController:self.mapController animated:NO completion:nil];
-            [self.presentedViewController dismissViewControllerAnimated:NO completion:nil];
+//            if (!self.presentedViewController) {
+//                return;
+//            }
+            if ([self.presentedViewController isKindOfClass:[MapLotViewController class]]) {
+                [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+                [self.navigationController setNavigationBarHidden:NO animated:NO];
+                [self.presentedViewController dismissViewControllerAnimated:NO completion:nil];
+            }
             break;
         case UIDeviceOrientationPortraitUpsideDown:
             break;
         case UIDeviceOrientationLandscapeLeft:
             rotation = M_PI_2;
             statusBarOrientation = UIInterfaceOrientationLandscapeRight;
-            [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+
 ////            [self.mapView setFrame:self.view.window.bounds];
 //            if (![self.view.window viewWithTag:100]) {
 //                [self.view.window addSubview:self.mapView];
 //            }else {
 //                return;
 //            }
-            [self presentViewController:self.mapController animated:NO completion:nil];
+//            if (![self.presentedViewController isKindOfClass:[CheckInViewController class]]) {
+            if (!self.presentedViewController) {
+                [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+                [self.navigationController setNavigationBarHidden:YES animated:NO];
+                [self presentViewController:self.mapController animated:NO completion:nil];
+            }
 
             break;
         case UIDeviceOrientationLandscapeRight:
             rotation = -M_PI_2;
             statusBarOrientation = UIInterfaceOrientationLandscapeLeft;
-            [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
 //            [self.mapView setFrame:self.view.window.bounds];
 //            if (![self.view.window viewWithTag:100]) {
 //                [self.view.window addSubview:self.mapView];
 //            }
-            [self presentViewController:self.mapController animated:NO completion:nil];
+//            if (![self.presentedViewController isKindOfClass:[CheckInViewController class]]) {
+            if (!self.presentedViewController) {
+                [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+                [self.navigationController setNavigationBarHidden:YES animated:NO];
+                [self presentViewController:self.mapController animated:NO completion:nil];
+            }
 
             break;
     }
@@ -183,7 +198,13 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+//    [self.navigationController setNavigationBarHidden:NO animated:NO];
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:YES];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad
@@ -200,13 +221,14 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
     [_HUD show:YES];
     
     // Add Pull to refresh to Table View
-//    [self addPullToRefreshHeader];
-//    [self addLeftSwipeGesture];
+    [self addPullToRefreshHeader];
+    [self addLeftSwipeGesture];
+    
+    UIImage *navCenter = [UIImage imageNamed:@"navCenter"];
+    UIImageView *titleView = [[UIImageView alloc] initWithImage:navCenter];
+    [self.navigationController.navigationBar.topItem setTitleView:titleView];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceDidRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
-
-
-
 }
 
 -(void) addLeftSwipeGesture
@@ -356,10 +378,12 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
     _refreshLabel.font = [UIFont boldSystemFontOfSize:12.0];
     _refreshLabel.textAlignment = NSTextAlignmentCenter;
     
-    _refreshArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"first.png"]];
-    _refreshArrow.frame = CGRectMake(floorf((REFRESH_HEADER_HEIGHT - 27) / 2),
-                                    (floorf(REFRESH_HEADER_HEIGHT - 44) / 2),
-                                    27, 44);
+//    _refreshArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"header_icon"]];
+    _refreshArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"header_icon_solid"]];
+    
+    _refreshArrow.frame = CGRectMake(floorf((REFRESH_HEADER_HEIGHT) / 2),
+                                    (floorf(REFRESH_HEADER_HEIGHT - 35) / 2),
+                                     _refreshArrow.frame.size.width, _refreshArrow.frame.size.height);
     
     _refreshSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     _refreshSpinner.frame = CGRectMake(floorf(floorf(REFRESH_HEADER_HEIGHT - 20) / 2), floorf((REFRESH_HEADER_HEIGHT - 20) / 2), 20, 20);
@@ -408,7 +432,7 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
 */
 
 #pragma mark - Table view delegate
-
+/*
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Navigation logic may go here. Create and push another view controller.
@@ -418,7 +442,7 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
     [self.navigationController pushViewController:detailViewController animated:YES];
     
 }
-
+*/
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     LSExploreLotCell *customCell = (LSExploreLotCell *)[tableView dequeueReusableCellWithIdentifier:@"LSExploreCell"];
     if (customCell == nil) {
@@ -435,7 +459,7 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
     
     [customCell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
-    customCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//    customCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     ExploreLots *exLots = [lotArray objectAtIndex:indexPath.row];
     //    NSLog(@"Lot Name: %@", exLots.name);

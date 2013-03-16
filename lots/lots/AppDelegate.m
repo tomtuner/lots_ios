@@ -31,11 +31,12 @@
 - (void) setupInitialTabBarController
 {
     UIViewController *viewController1 = [[FirstViewController alloc] initWithNibName:@"FirstViewController" bundle:nil];
-    UINavigationController *navCont = [[UINavigationController alloc] initWithRootViewController:viewController1];
-    [navCont setNavigationBarHidden:YES];
+    UINavigationController *navCont1 = [[UINavigationController alloc] initWithRootViewController:viewController1];
+//    [navCont1 setNavigationBarHidden:YES];
     UIViewController *viewController2 = [[SecondViewController alloc] initWithNibName:@"SecondViewController" bundle:nil];
+    UINavigationController *navCont2 = [[UINavigationController alloc] initWithRootViewController:viewController2];
     self.tabBarController = [[UITabBarController alloc] init];
-    self.tabBarController.viewControllers = @[navCont, viewController2];
+    self.tabBarController.viewControllers = @[navCont1, navCont2];
 }
 
 -(void) motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
@@ -56,8 +57,21 @@
     	}
         CheckInViewController *checkIn = [[CheckInViewController alloc] initWithNibName:@"CheckInViewController" bundle:nil];
         checkIn.lot = [closestLots objectAtIndex:0];
-        [self.window.rootViewController presentViewController:checkIn animated:YES completion:nil];
+        if (!self.tabBarController.presentedViewController) {
+            [self.tabBarController presentViewController:checkIn animated:YES completion:nil];
+        }
     }
+}
+
+-(void) showAchievementViewWithCount:(int) count
+{
+    AchievementsViewController *achVC = [[AchievementsViewController alloc] initWithNibName:@"AchievementsViewController" bundle:nil];
+    achVC.count = count;
+    self.tabBarController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    achVC.view.alpha = 0.2;
+    [self.tabBarController presentViewController:achVC animated:NO completion:nil];
+    [UIView animateWithDuration:0.5
+                     animations:^{achVC.view.alpha  = 1.0;}];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
