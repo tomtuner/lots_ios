@@ -9,7 +9,7 @@
 #import "AFLotsAPIClient.h"
 #import "AFJSONRequestOperation.h"
 
-static NSString * const kAFLotsAPIBaseURLString = @"http://www.sisextension.com/lots/";
+static NSString * const kAFLotsAPIBaseURLString = @"http://www.occupylots.com/lots/";
 
 @implementation AFLotsAPIClient
 
