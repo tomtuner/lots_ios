@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Flurry.h"
 #import "LocationManager.h"
 #import "Theme.h"
 #import "CheckInViewController.h"
@@ -20,5 +21,6 @@
 //@property (assign, nonatomic) BOOL shouldShowAchievement;
 
 -(void) showAchievementViewWithCount:(int) count;
+- (void) uncaughtExceptionHandler:(NSException *) exception;
 
 @end

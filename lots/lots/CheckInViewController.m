@@ -14,6 +14,8 @@
 
 @end
 
+static NSString * const kLSFlurryCheckInEvent = @"Check_In";
+
 @implementation CheckInViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -127,6 +129,7 @@
     
     [CheckInLot globalCheckInToLotWithLotID:self.lot.lotID withOccupancy:occupancySelected withBlock:^(NSArray *lot, NSError *error) {
         if (!error) {
+            [Flurry logEvent:kLSFlurryCheckInEvent];
             [self dismissViewWithAchievementCheck];
         }
     }];

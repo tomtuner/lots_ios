@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import "Notifications.h"
+#import "Flurry.h"
 
 static float SIMULATE_LATITUDE  = 43.00;
 static float SIMULATE_LONGITUDE = -77.50;

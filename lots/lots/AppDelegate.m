@@ -7,10 +7,10 @@
 //
 
 #import "AppDelegate.h"
-
 #import "FirstViewController.h"
-
 #import "SecondViewController.h"
+
+static NSString * const kLSFlurryAPIKey = @"MKQ6CH3HVZ5HM9Y6NW2R";
 
 @implementation AppDelegate
 
@@ -23,6 +23,14 @@
     
     [ThemeManager customizeAppAppearance];
     [[LocationManager sharedLocationManager] startUpdates];
+    [Flurry startSession:kLSFlurryAPIKey];
+    
+    if (!([[NSUserDefaults standardUserDefaults] boolForKey:@"Development"])) {
+        // Set the FlurryAnalytics session
+        NSSetUncaughtExceptionHandler(@selector(uncaughtExceptionHandler:));
+//        NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+        [Flurry startSession:kLSFlurryAPIKey];
+    }
 
     [self.window makeKeyAndVisible];
     return YES;
@@ -72,6 +80,10 @@
     [self.tabBarController presentViewController:achVC animated:NO completion:nil];
     [UIView animateWithDuration:0.5
                      animations:^{achVC.view.alpha  = 1.0;}];
+}
+
+- (void) uncaughtExceptionHandler:(NSException *) exception {
+    [Flurry logError:@"Uncaught Exception" message:@"Unexpected crash" exception:exception];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

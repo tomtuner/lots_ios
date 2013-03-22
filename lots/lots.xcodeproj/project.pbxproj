@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1F9E71B09FA44ADFA67A4EF8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21B48F20FF2446CC82F0F521 /* libPods.a */; };
+		E915AE2316FBCA6A000FC410 /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E915AE2216FBCA6A000FC410 /* libFlurry.a */; };
+		E915AE2516FBD99F000FC410 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = E915AE2416FBD99F000FC410 /* defaults.plist */; };
 		E975C80C16F1A30800AF4AB6 /* LotsTabBarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C80B16F1A30800AF4AB6 /* LotsTabBarBackground@2x.png */; };
 		E975C80E16F1A39300AF4AB6 /* LotsTabBarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C80D16F1A39300AF4AB6 /* LotsTabBarBackground.png */; };
 		E975C81016F221A800AF4AB6 /* LotsTabBarSelectedBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C80F16F221A800AF4AB6 /* LotsTabBarSelectedBG@2x.png */; };
@@ -87,6 +89,9 @@
 /* Begin PBXFileReference section */
 		21B48F20FF2446CC82F0F521 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AD52480A6C54F208D21A4F7 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		E915AE2116FBCA6A000FC410 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		E915AE2216FBCA6A000FC410 /* libFlurry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry.a; sourceTree = "<group>"; };
+		E915AE2416FBD99F000FC410 /* defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaults.plist; sourceTree = "<group>"; };
 		E975C80B16F1A30800AF4AB6 /* LotsTabBarBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LotsTabBarBackground@2x.png"; path = "lots/LotsTabBarBackground@2x.png"; sourceTree = "<group>"; };
 		E975C80D16F1A39300AF4AB6 /* LotsTabBarBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LotsTabBarBackground.png; path = lots/LotsTabBarBackground.png; sourceTree = "<group>"; };
 		E975C80F16F221A800AF4AB6 /* LotsTabBarSelectedBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LotsTabBarSelectedBG@2x.png"; path = "lots/LotsTabBarSelectedBG@2x.png"; sourceTree = "<group>"; };
@@ -197,12 +202,22 @@
 				E9B2F09816EE4C6100976D0E /* Foundation.framework in Frameworks */,
 				E9B2F09A16EE4C6100976D0E /* CoreGraphics.framework in Frameworks */,
 				1F9E71B09FA44ADFA67A4EF8 /* libPods.a in Frameworks */,
+				E915AE2316FBCA6A000FC410 /* libFlurry.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E915AE2016FBCA6A000FC410 /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				E915AE2116FBCA6A000FC410 /* Flurry.h */,
+				E915AE2216FBCA6A000FC410 /* libFlurry.a */,
+			);
+			path = Flurry;
+			sourceTree = "<group>";
+		};
 		E975C84A16F3F2F100AF4AB6 /* achievements */ = {
 			isa = PBXGroup;
 			children = (
@@ -297,8 +312,10 @@
 		E9B2F09C16EE4C6100976D0E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E915AE2016FBCA6A000FC410 /* Flurry */,
 				E9B2F11E16EFFD1700976D0E /* MBProgressHUD */,
 				E9B2F09D16EE4C6100976D0E /* lots-Info.plist */,
+				E915AE2416FBD99F000FC410 /* defaults.plist */,
 				E9B2F09E16EE4C6100976D0E /* InfoPlist.strings */,
 				E9B2F0A116EE4C6100976D0E /* main.m */,
 				E9B2F0A316EE4C6100976D0E /* lots-Prefix.pch */,
@@ -520,6 +537,7 @@
 				E975C85E16F3FE6D00AF4AB6 /* ach_10@2x.png in Resources */,
 				E975C85F16F3FE6D00AF4AB6 /* ach_bg.png in Resources */,
 				E975C86016F3FE6D00AF4AB6 /* ach_bg@2x.png in Resources */,
+				E915AE2516FBD99F000FC410 /* defaults.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -664,7 +682,10 @@
 				GCC_PREFIX_HEADER = "lots/lots-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${PODS_HEADERS_SEARCH_PATHS}";
 				INFOPLIST_FILE = "lots/lots-Info.plist";
-				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)",
+					"\"$(SRCROOT)/lots/Flurry\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -678,7 +699,10 @@
 				GCC_PREFIX_HEADER = "lots/lots-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${PODS_HEADERS_SEARCH_PATHS}";
 				INFOPLIST_FILE = "lots/lots-Info.plist";
-				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)",
+					"\"$(SRCROOT)/lots/Flurry\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

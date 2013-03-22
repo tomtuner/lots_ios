@@ -124,7 +124,7 @@ static BOOL initialized = NO;
     locationDefined = YES;
     
     if (!([[NSUserDefaults standardUserDefaults] boolForKey:@"Development"])) {
-//        [FlurryAnalytics setLatitude:latitude longitude:longitude horizontalAccuracy:newLocation.horizontalAccuracy verticalAccuracy:newLocation.verticalAccuracy];
+        [Flurry setLatitude:latitude longitude:longitude horizontalAccuracy:newLocation.horizontalAccuracy verticalAccuracy:newLocation.verticalAccuracy];
     }
     
     // Notification that location has finished updating
