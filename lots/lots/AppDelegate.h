@@ -11,6 +11,7 @@
 #import "LocationManager.h"
 #import "Theme.h"
 #import "CheckInViewController.h"
+#import "CreateLotViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate>
 

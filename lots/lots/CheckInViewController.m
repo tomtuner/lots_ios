@@ -180,7 +180,9 @@ static NSString * const kLSFlurryCheckInEvent = @"Check_In";
 - (void)plotLotPosition {
     
     for (id<MKAnnotation> annotation in _mapView.annotations) {
-        [_mapView removeAnnotation:annotation];
+        if (annotation != self.mapView.userLocation) {
+            [_mapView removeAnnotation:annotation];
+        }
     }
     CLLocationCoordinate2D coordinate;
     coordinate.latitude = self.lot.latitude;

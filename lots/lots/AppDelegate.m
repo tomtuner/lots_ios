@@ -40,11 +40,12 @@ static NSString * const kLSFlurryAPIKey = @"MKQ6CH3HVZ5HM9Y6NW2R";
 {
     UIViewController *viewController1 = [[FirstViewController alloc] initWithNibName:@"FirstViewController" bundle:nil];
     UINavigationController *navCont1 = [[UINavigationController alloc] initWithRootViewController:viewController1];
-//    [navCont1 setNavigationBarHidden:YES];
     UIViewController *viewController2 = [[SecondViewController alloc] initWithNibName:@"SecondViewController" bundle:nil];
     UINavigationController *navCont2 = [[UINavigationController alloc] initWithRootViewController:viewController2];
+    UIViewController *viewController3 = [[CreateLotViewController alloc] initWithNibName:@"CreateLotViewController" bundle:nil];
+    UINavigationController *navCont3 = [[UINavigationController alloc] initWithRootViewController:viewController3];
     self.tabBarController = [[UITabBarController alloc] init];
-    self.tabBarController.viewControllers = @[navCont1, navCont2];
+    self.tabBarController.viewControllers = @[navCont1, navCont2, navCont3];
 }
 
 -(void) motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event

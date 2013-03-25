@@ -212,14 +212,7 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    _HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:_HUD];
-    
-    _HUD.labelText = @"Loading Parking Lots...";
-    _HUD.square = YES;
-    
-    [_HUD show:YES];
-    
+    [self setupHUD];
     // Add Pull to refresh to Table View
     [self addPullToRefreshHeader];
     [self addLeftSwipeGesture];
@@ -229,6 +222,17 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
     [self.navigationController.navigationBar.topItem setTitleView:titleView];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceDidRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
+}
+
+-(void) setupHUD
+{
+    _HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:_HUD];
+    
+    _HUD.labelText = @"Loading Parking Lots...";
+    _HUD.square = YES;
+    
+    [_HUD show:YES];
 }
 
 -(void) addLeftSwipeGesture

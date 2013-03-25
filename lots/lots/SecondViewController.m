@@ -20,8 +20,8 @@
     if (self) {
         self.title = NSLocalizedString(@"Check-in", @"check-ing tab");
         self.tabBarItem.image = [UIImage imageNamed:@"flag"];
-        self.mapView = [[MKMapView alloc] init];
-        self.mapView.tag = 101;
+//        self.mapView = [[MKMapView alloc] init];
+//        self.mapView.tag = 101;
         @try {
     		NSString *documentsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                                           NSUserDomainMask, YES) objectAtIndex:0];

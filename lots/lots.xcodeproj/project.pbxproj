@@ -10,6 +10,11 @@
 		1F9E71B09FA44ADFA67A4EF8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21B48F20FF2446CC82F0F521 /* libPods.a */; };
 		E915AE2316FBCA6A000FC410 /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E915AE2216FBCA6A000FC410 /* libFlurry.a */; };
 		E915AE2516FBD99F000FC410 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = E915AE2416FBD99F000FC410 /* defaults.plist */; };
+		E915AE291700B6E0000FC410 /* CreateLotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E915AE271700B6E0000FC410 /* CreateLotViewController.m */; };
+		E915AE2A1700B6E0000FC410 /* CreateLotViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E915AE281700B6E0000FC410 /* CreateLotViewController.xib */; };
+		E915AE2D1700C961000FC410 /* WildcardGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = E915AE2C1700C960000FC410 /* WildcardGestureRecognizer.m */; };
+		E915AE311700CF4F000FC410 /* AddLotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E915AE2F1700CF4E000FC410 /* AddLotViewController.m */; };
+		E915AE321700CF4F000FC410 /* AddLotViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E915AE301700CF4E000FC410 /* AddLotViewController.xib */; };
 		E975C80C16F1A30800AF4AB6 /* LotsTabBarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C80B16F1A30800AF4AB6 /* LotsTabBarBackground@2x.png */; };
 		E975C80E16F1A39300AF4AB6 /* LotsTabBarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C80D16F1A39300AF4AB6 /* LotsTabBarBackground.png */; };
 		E975C81016F221A800AF4AB6 /* LotsTabBarSelectedBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C80F16F221A800AF4AB6 /* LotsTabBarSelectedBG@2x.png */; };
@@ -58,11 +63,7 @@
 		E9B2F0AA16EE4C6100976D0E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B2F0A916EE4C6100976D0E /* Default@2x.png */; };
 		E9B2F0AC16EE4C6100976D0E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B2F0AB16EE4C6100976D0E /* Default-568h@2x.png */; };
 		E9B2F0AF16EE4C6100976D0E /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2F0AE16EE4C6100976D0E /* FirstViewController.m */; };
-		E9B2F0B116EE4C6100976D0E /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B2F0B016EE4C6100976D0E /* first.png */; };
-		E9B2F0B316EE4C6100976D0E /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B2F0B216EE4C6100976D0E /* first@2x.png */; };
 		E9B2F0B616EE4C6100976D0E /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2F0B516EE4C6100976D0E /* SecondViewController.m */; };
-		E9B2F0B816EE4C6100976D0E /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B2F0B716EE4C6100976D0E /* second.png */; };
-		E9B2F0BA16EE4C6100976D0E /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B2F0B916EE4C6100976D0E /* second@2x.png */; };
 		E9B2F0BD16EE4C6100976D0E /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9B2F0BB16EE4C6100976D0E /* FirstViewController.xib */; };
 		E9B2F0C016EE4C6100976D0E /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9B2F0BE16EE4C6100976D0E /* SecondViewController.xib */; };
 		E9B2F0CC16EE54EF00976D0E /* didact_gothic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9B2F0CB16EE54EF00976D0E /* didact_gothic.ttf */; };
@@ -92,6 +93,14 @@
 		E915AE2116FBCA6A000FC410 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		E915AE2216FBCA6A000FC410 /* libFlurry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry.a; sourceTree = "<group>"; };
 		E915AE2416FBD99F000FC410 /* defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaults.plist; sourceTree = "<group>"; };
+		E915AE261700B6E0000FC410 /* CreateLotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateLotViewController.h; sourceTree = "<group>"; };
+		E915AE271700B6E0000FC410 /* CreateLotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateLotViewController.m; sourceTree = "<group>"; };
+		E915AE281700B6E0000FC410 /* CreateLotViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateLotViewController.xib; sourceTree = "<group>"; };
+		E915AE2B1700C960000FC410 /* WildcardGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WildcardGestureRecognizer.h; sourceTree = "<group>"; };
+		E915AE2C1700C960000FC410 /* WildcardGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WildcardGestureRecognizer.m; sourceTree = "<group>"; };
+		E915AE2E1700CF4D000FC410 /* AddLotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddLotViewController.h; sourceTree = "<group>"; };
+		E915AE2F1700CF4E000FC410 /* AddLotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddLotViewController.m; sourceTree = "<group>"; };
+		E915AE301700CF4E000FC410 /* AddLotViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddLotViewController.xib; sourceTree = "<group>"; };
 		E975C80B16F1A30800AF4AB6 /* LotsTabBarBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LotsTabBarBackground@2x.png"; path = "lots/LotsTabBarBackground@2x.png"; sourceTree = "<group>"; };
 		E975C80D16F1A39300AF4AB6 /* LotsTabBarBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LotsTabBarBackground.png; path = lots/LotsTabBarBackground.png; sourceTree = "<group>"; };
 		E975C80F16F221A800AF4AB6 /* LotsTabBarSelectedBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LotsTabBarSelectedBG@2x.png"; path = "lots/LotsTabBarSelectedBG@2x.png"; sourceTree = "<group>"; };
@@ -149,12 +158,8 @@
 		E9B2F0AB16EE4C6100976D0E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		E9B2F0AD16EE4C6100976D0E /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		E9B2F0AE16EE4C6100976D0E /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		E9B2F0B016EE4C6100976D0E /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
-		E9B2F0B216EE4C6100976D0E /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
 		E9B2F0B416EE4C6100976D0E /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		E9B2F0B516EE4C6100976D0E /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
-		E9B2F0B716EE4C6100976D0E /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
-		E9B2F0B916EE4C6100976D0E /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		E9B2F0BC16EE4C6100976D0E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FirstViewController.xib; sourceTree = "<group>"; };
 		E9B2F0BF16EE4C6100976D0E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SecondViewController.xib; sourceTree = "<group>"; };
 		E9B2F0CB16EE54EF00976D0E /* didact_gothic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = didact_gothic.ttf; path = lots/fonts/didact_gothic.ttf; sourceTree = "<group>"; };
@@ -289,12 +294,11 @@
 				E9B2F0A516EE4C6100976D0E /* AppDelegate.m */,
 				E9B2F0AD16EE4C6100976D0E /* FirstViewController.h */,
 				E9B2F0AE16EE4C6100976D0E /* FirstViewController.m */,
-				E9B2F0B016EE4C6100976D0E /* first.png */,
-				E9B2F0B216EE4C6100976D0E /* first@2x.png */,
 				E9B2F0B416EE4C6100976D0E /* SecondViewController.h */,
 				E9B2F0B516EE4C6100976D0E /* SecondViewController.m */,
-				E9B2F0B716EE4C6100976D0E /* second.png */,
-				E9B2F0B916EE4C6100976D0E /* second@2x.png */,
+				E915AE261700B6E0000FC410 /* CreateLotViewController.h */,
+				E915AE271700B6E0000FC410 /* CreateLotViewController.m */,
+				E915AE281700B6E0000FC410 /* CreateLotViewController.xib */,
 				E9B2F0BB16EE4C6100976D0E /* FirstViewController.xib */,
 				E9B2F0BE16EE4C6100976D0E /* SecondViewController.xib */,
 				E9B2F09C16EE4C6100976D0E /* Supporting Files */,
@@ -304,6 +308,11 @@
 				E9B2F13716F172C500976D0E /* LotDetailViewController.h */,
 				E9B2F13816F172C600976D0E /* LotDetailViewController.m */,
 				E9B2F13916F172C700976D0E /* LotDetailViewController.xib */,
+				E915AE2B1700C960000FC410 /* WildcardGestureRecognizer.h */,
+				E915AE2C1700C960000FC410 /* WildcardGestureRecognizer.m */,
+				E915AE2E1700CF4D000FC410 /* AddLotViewController.h */,
+				E915AE2F1700CF4E000FC410 /* AddLotViewController.m */,
+				E915AE301700CF4E000FC410 /* AddLotViewController.xib */,
 			);
 			name = lots_source;
 			path = lots;
@@ -493,10 +502,6 @@
 				E9B2F0A816EE4C6100976D0E /* Default.png in Resources */,
 				E9B2F0AA16EE4C6100976D0E /* Default@2x.png in Resources */,
 				E9B2F0AC16EE4C6100976D0E /* Default-568h@2x.png in Resources */,
-				E9B2F0B116EE4C6100976D0E /* first.png in Resources */,
-				E9B2F0B316EE4C6100976D0E /* first@2x.png in Resources */,
-				E9B2F0B816EE4C6100976D0E /* second.png in Resources */,
-				E9B2F0BA16EE4C6100976D0E /* second@2x.png in Resources */,
 				E9B2F0BD16EE4C6100976D0E /* FirstViewController.xib in Resources */,
 				E9B2F0C016EE4C6100976D0E /* SecondViewController.xib in Resources */,
 				E9B2F0CC16EE54EF00976D0E /* didact_gothic.ttf in Resources */,
@@ -538,6 +543,8 @@
 				E975C85F16F3FE6D00AF4AB6 /* ach_bg.png in Resources */,
 				E975C86016F3FE6D00AF4AB6 /* ach_bg@2x.png in Resources */,
 				E915AE2516FBD99F000FC410 /* defaults.plist in Resources */,
+				E915AE2A1700B6E0000FC410 /* CreateLotViewController.xib in Resources */,
+				E915AE321700CF4F000FC410 /* AddLotViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,6 +592,9 @@
 				E975C82016F3638D00AF4AB6 /* LotMapViewController.m in Sources */,
 				E975C82416F37E6000AF4AB6 /* MapLotViewController.m in Sources */,
 				E975C84E16F3F32F00AF4AB6 /* AchievementsViewController.m in Sources */,
+				E915AE291700B6E0000FC410 /* CreateLotViewController.m in Sources */,
+				E915AE2D1700C961000FC410 /* WildcardGestureRecognizer.m in Sources */,
+				E915AE311700CF4F000FC410 /* AddLotViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
