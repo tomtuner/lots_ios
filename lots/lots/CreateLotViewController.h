@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import <QuartzCore/QuartzCore.h>
-#import "WildcardGestureRecognizer.h"
 #import "AddLotViewController.h"
 
 @interface CreateLotViewController : UIViewController

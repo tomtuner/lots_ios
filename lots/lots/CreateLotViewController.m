@@ -15,7 +15,9 @@
 @property(nonatomic, strong) IBOutlet UITableView *tableView;
 @property(nonatomic, strong) UITextField *nameField;
 
-@property (nonatomic, strong) CLLocation* initialLocation;
+@property (nonatomic, strong) CLLocation *initialLocation;
+
+@property (nonatomic, strong) UIImageView *titleView;
 
 @end
 
@@ -26,7 +28,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.title = NSLocalizedString(@"Add New Lot", @"create tab");
+        self.title = NSLocalizedString(@"Create", @"create tab");
         self.tabBarItem.image = [UIImage imageNamed:@"flag"];
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
@@ -35,8 +37,8 @@
         
         [self.view addGestureRecognizer:tap];
         
-        UIBarButtonItem *sAddButton = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStyleDone target:self action:@selector(addClicked)];
-        
+        UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStyleDone target:self action:@selector(addClicked)];
+        self.navigationItem.rightBarButtonItem = addButton;
     }
     return self;
 }
@@ -47,56 +49,63 @@
     // Do any additional setup after loading the view from its nib.
     
     UIImage *navCenter = [UIImage imageNamed:@"navCenter"];
-    UIImageView *titleView = [[UIImageView alloc] initWithImage:navCenter];
-    [self.navigationController.navigationBar.topItem setTitleView:titleView];
-    
-    /*
-    WildcardGestureRecognizer *mapClick = [[WildcardGestureRecognizer alloc] init];
-    //        mapClick.delegate = self;
-    //        mapClick.numberOfTapsRequired = 1;
-    //        mapClick.numberOfTouchesRequired = 1;
-    mapClick.touchesBeganCallback = ^(NSSet *touches, UIEvent *event) {
-        //            self.lockedOnUserLocation = NO;
-        NSLog(@"Touch?");
-    };*/
+    _titleView = [[UIImageView alloc] initWithImage:navCenter];
+    [self.navigationItem setTitleView:_titleView];
+
+    CABasicAnimation *pulseAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    pulseAnimation.duration = .5;
+    pulseAnimation.toValue = [NSNumber numberWithFloat:0.9];
+    pulseAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    pulseAnimation.autoreverses = YES;
+    pulseAnimation.repeatCount = 1;
+    [_titleView.layer addAnimation:pulseAnimation forKey:nil];
     
     UITapGestureRecognizer *mapClick = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mapViewSelected:)];
-    
     [self.mapView addGestureRecognizer:mapClick];
     
     [self.mapView.layer setCornerRadius:5.0f];
     [self.mapView.layer setBorderColor:[UIColor lightGrayColor].CGColor];
     [self.mapView.layer setBorderWidth:1.0f];
-    [self.mapView.layer setShadowColor:[UIColor blackColor].CGColor];
-    [self.mapView.layer setShadowOpacity:0.8];
-    [self.mapView.layer setShadowRadius:3.0];
-    [self.mapView.layer setShadowOffset:CGSizeMake(2.0, 2.0)];
+//    [self.mapView.layer setShadowColor:[UIColor blackColor].CGColor];
+//    [self.mapView.layer setShadowOpacity:0.8];
+//    [self.mapView.layer setShadowRadius:3.0];
+//    [self.mapView.layer setShadowOffset:CGSizeMake(1.0, 1.0)];
+    
+    UIView *mapOverlayView = [[UIView alloc] initWithFrame:CGRectMake(self.mapView.frame.origin.x, self.mapView.frame.origin.y, self.mapView.frame.size.width, 44)];
+    // set the radius
+    CGFloat radius = 5.0;
+    // set the mask frame, and increase the height by the
+    // corner radius to hide bottom corners
+    CGRect maskFrame = mapOverlayView.bounds;
+    maskFrame.size.height += radius;
+    // create the mask layer
+    CALayer *maskLayer = [CALayer layer];
+    maskLayer.cornerRadius = radius;
+    maskLayer.backgroundColor = [UIColor blackColor].CGColor;
+    maskLayer.frame = maskFrame;
+    
+    // set the mask
+    mapOverlayView.layer.mask = maskLayer;
+    [mapOverlayView setBackgroundColor:[UIColor blackColor]];
+    [mapOverlayView setAlpha:0.8f];
+    
+    
+    
+    UILabel *mapOverlayLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, self.mapView.frame.size.width - 20, 44)];
+    [mapOverlayLabel setBackgroundColor:[UIColor clearColor]];
+    [mapOverlayLabel setTextColor:[UIColor whiteColor]];
+    [mapOverlayLabel setFont:[UIFont boldSystemFontOfSize:16.0f]];
+    mapOverlayLabel.text = @"Tap the map to locate the lot";
+    [mapOverlayView addSubview:mapOverlayLabel];
+    
+    [self.view addSubview:mapOverlayView];
 }
 
 -(void) addClicked
 {
     NSLog(@"Add Clicked");
 }
-/*
--(void) touchesBegan :(NSSet *) touches withEvent:(UIEvent *)event
-{
-    UITouch *touch = [touches anyObject];
-    NSLog(@"%@",[[[[touch view] subviews] objectAtIndex:0] description]);
-    if ([[touch view] isKindOfClass:[MKMapView class]])
-    {
-        //rest of my code
-        NSLog(@"map Map MAP");
-    }
-    
-    [super touchesBegan:touches withEvent:event ];
-}
-*/
-/*
--(BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
-{
-    return YES;
-}
- */
+
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
     NSLog(@"Did Update to Location");
@@ -154,7 +163,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     if (section == 0) {
-        return @"Add A Parking Lot";
+        return @"Add a Parking Lot";
     }
     return nil;
 }

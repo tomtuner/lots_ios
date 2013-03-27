@@ -10,6 +10,8 @@
 
 @interface SecondViewController ()
 
+@property(nonatomic, strong) UIImageView *titleView;
+
 @end
 
 @implementation SecondViewController
@@ -49,6 +51,8 @@
 {
     [super viewWillAppear:animated];
 //    [self refreshLots];
+    
+
 }
 
 - (void) locationUpdated
@@ -65,11 +69,28 @@
     [self addRightSwipeGesture];
     [self.lotCollectionView registerClass:[LSCheckInCell class] forCellWithReuseIdentifier:@"LSCheckInCell"];
     
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
+                                                                     style:UIBarButtonItemStyleBordered
+                                                                    target:self
+                                                                    action:@selector(dismissView)];
+    self.navigationItem.title = @"Check In";
+    self.navigationItem.leftBarButtonItem = cancelButton;
+
+    /*
     UIImage *navCenter = [UIImage imageNamed:@"navCenter"];
-    UIImageView *titleView = [[UIImageView alloc] initWithImage:navCenter];
-    [self.navigationController.navigationBar.topItem setTitleView:titleView];
+    _titleView = [[UIImageView alloc] initWithImage:navCenter];
+    [self.navigationController.navigationBar.topItem setTitleView:_titleView];
     
-    [ThemeManager customizeLabelWithCustomFont:self.titleLabel];
+    CABasicAnimation *pulseAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    pulseAnimation.duration = .5;
+    pulseAnimation.toValue = [NSNumber numberWithFloat:0.9];
+    pulseAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    pulseAnimation.autoreverses = YES;
+    pulseAnimation.repeatCount = 1;
+    [_titleView.layer addAnimation:pulseAnimation forKey:nil];
+     */
+    
+//    [ThemeManager customizeLabelWithCustomFont:self.titleLabel];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceDidRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
     [[LocationManager sharedLocationManager] startUpdates];
 }
@@ -79,6 +100,11 @@
     UISwipeGestureRecognizer *leftGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(selectLeftTab)];
     leftGesture.direction = UISwipeGestureRecognizerDirectionRight;
     [self.lotCollectionView addGestureRecognizer:leftGesture];
+}
+
+-(void) dismissView
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void) selectLeftTab
@@ -135,7 +161,7 @@
     ExploreLots *chosenLot = [lotArray objectAtIndex:indexPath.row];
     CheckInViewController *chkController = [[CheckInViewController alloc] initWithNibName:@"CheckInViewController" bundle:nil];
     chkController.lot = chosenLot;
-    [self presentViewController:chkController animated:YES completion:nil];
+    [self.navigationController pushViewController:chkController animated:YES];
 }
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
     // TODO: Deselect item
@@ -196,7 +222,9 @@
 - (void)plotLotPositions {
     
     for (id<MKAnnotation> annotation in self.mapView.annotations) {
-        [self.mapView removeAnnotation:annotation];
+        if (annotation != self.mapView.userLocation) {
+            [self.mapView removeAnnotation:annotation];
+        }
     }
     NSLog(@"Lot info: %@", [[lotArray objectAtIndex:0] description]);
 

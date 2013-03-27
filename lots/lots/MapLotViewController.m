@@ -30,10 +30,27 @@
     [self plotLotPositions];
 }
 
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+{
+//    if ( self.initialLocation != userLocation.location )
+//    {
+//        self.initialLocation = userLocation.location;
+    
+        MKCoordinateRegion region;
+        region.center = mapView.userLocation.coordinate;
+        region.span = MKCoordinateSpanMake(0.003, 0.003);
+        
+        region = [mapView regionThatFits:region];
+        [mapView setRegion:region animated:YES];
+    
+}
+
 - (void)plotLotPositions {
     
     for (id<MKAnnotation> annotation in self.mapView.annotations) {
-        [self.mapView removeAnnotation:annotation];
+        if (annotation != self.mapView.userLocation) {
+            [self.mapView removeAnnotation:annotation];
+        }
     }
     NSLog(@"Lot info: %@", [[self.lotArray objectAtIndex:0] description]);
     

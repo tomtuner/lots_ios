@@ -63,7 +63,9 @@
 - (void)plotLotPositions {
     
     for (id<MKAnnotation> annotation in self.mapView.annotations) {
-        [self.mapView removeAnnotation:annotation];
+        if (annotation != self.mapView.userLocation) {
+            [self.mapView removeAnnotation:annotation];
+        }
     }
     NSLog(@"Lot info: %@", [[self.lotArray objectAtIndex:0] description]);
     
@@ -83,7 +85,7 @@
         [self.mapView addAnnotation:annotation];
     }
     [self.view addSubview:self.mapView];
-    //    [self.mapView setShowsUserLocation:YES];
+    [self.mapView setShowsUserLocation:YES];
 }
 
 - (void)didReceiveMemoryWarning

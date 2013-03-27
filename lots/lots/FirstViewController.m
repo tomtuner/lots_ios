@@ -10,6 +10,8 @@
 
 @interface FirstViewController ()
 
+@property(nonatomic, strong) UIImageView *titleView;
+
 @end
 
 @implementation FirstViewController
@@ -22,8 +24,7 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
     if (self) {
         self.title = NSLocalizedString(@"Explore", @"explore tab");
         self.tabBarItem.image = [UIImage imageNamed:@"magnifier"];
-//        self.mapView = [[MKMapView alloc] initWithFrame:self.view.window.bounds];
-//        self.mapView.tag = 100;
+
         @try {
     		NSString *documentsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                                           NSUserDomainMask, YES) objectAtIndex:0];
@@ -50,6 +51,99 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
                                                   object:nil];
     }
     return self;
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    //    [self.navigationController setNavigationBarHidden:NO animated:NO];
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:YES];
+    //    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	// Do any additional setup after loading the view, typically from a nib.
+    
+    [self setupHUD];
+    // Add Pull to refresh to Table View
+    [self addPullToRefreshHeader];
+    [self addLeftSwipeGesture];
+    
+    [self addCheckInButton];
+    
+    UIImage *navCenter = [UIImage imageNamed:@"navCenter"];
+    _titleView = [[UIImageView alloc] initWithImage:navCenter];
+    [self.navigationController.navigationBar.topItem setTitleView:_titleView];
+    
+    CABasicAnimation *pulseAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    pulseAnimation.duration = .5;
+    pulseAnimation.toValue = [NSNumber numberWithFloat:0.9];
+    pulseAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    pulseAnimation.autoreverses = YES;
+    pulseAnimation.repeatCount = 1;
+    [_titleView.layer addAnimation:pulseAnimation forKey:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceDidRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
+}
+
+- (void) addCheckInButton
+{
+    UIImage *buttonImage = [UIImage imageNamed:@"yellow_button_line"];
+    UIImage *checkInImage = [UIImage imageNamed:@"check_in_icon"];
+
+    UIImageView *buttonBackground = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 55, buttonImage.size.height)];
+    [buttonBackground setUserInteractionEnabled:YES];
+    
+    UITapGestureRecognizer *tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(checkInSelected)];
+    [buttonBackground addGestureRecognizer:tgr];
+    [buttonBackground setImage:buttonImage];
+    
+    UIButton *checkInButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    //    [checkInButton setBackgroundColor:[UIColor whiteColor]];
+    [checkInButton setBackgroundImage:checkInImage forState:UIControlStateNormal];
+    checkInButton.frame = CGRectMake(buttonImage.size.width/2 - checkInImage.size.width/2 + 5, buttonImage.size.height/2 - checkInImage.size.height/2, checkInImage.size.width, checkInImage.size.height);
+//    checkInButton.frame = CGRectMake(0, 0, buttonImage.size.width, 44);
+
+    checkInButton.layer.shadowColor = [[UIColor blackColor] CGColor];
+    checkInButton.layer.shadowOffset = CGSizeMake(1.0,1.0);
+//    checkInButton.layer.borderColor = [[UIColor blackColor] CGColor];
+//    checkInButton.layer.borderWidth = 1.0f;
+    checkInButton.layer.masksToBounds = NO;
+    checkInButton.layer.shadowOpacity = 1.0f;
+    checkInButton.layer.shadowRadius = 1.0f;
+    
+//    [checkInButton addGestureRecognizer:tgr];
+    [checkInButton addTarget:self action:@selector(checkInSelected)
+                forControlEvents:UIControlEventTouchUpInside];
+    
+    [buttonBackground addSubview:checkInButton];
+    
+    UIBarButtonItem *checkInBarButton = [[UIBarButtonItem alloc]
+                                         initWithCustomView:buttonBackground];
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
+                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                       target:nil action:nil];
+    negativeSpacer.width = -5;
+    // Note: We use 5 above b/c that's how many pixels of padding iOS seems to add
+    
+    // Add the two buttons together on the left:
+    self.navigationItem.rightBarButtonItems = [NSArray
+                                               arrayWithObjects: negativeSpacer, checkInBarButton, nil];
+    
+    
+}
+
+-(void) checkInSelected
+{
+    SecondViewController *secondViewController = [[SecondViewController alloc] initWithNibName:@"SecondViewController" bundle:nil];
+    UINavigationController *navCont = [[UINavigationController alloc] initWithRootViewController:secondViewController];
+    [self presentViewController:navCont animated:YES completion:nil];
 }
 
 - (void)deviceDidRotate:(NSNotification *)notification
@@ -127,7 +221,9 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
 - (void)plotLotPositions {
     
     for (id<MKAnnotation> annotation in self.mapView.annotations) {
-        [self.mapView removeAnnotation:annotation];
+        if (annotation != self.mapView.userLocation) {
+            [self.mapView removeAnnotation:annotation];
+        }
     }
     NSLog(@"Lot info: %@", [[lotArray objectAtIndex:0] description]);
 
@@ -193,35 +289,6 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
         
         [self performSelector:@selector(closeHUDDisplay) withObject:nil afterDelay:2.0];
     }];
-}
-
--(void) viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-//    [self.navigationController setNavigationBarHidden:NO animated:NO];
-}
-
-- (void) viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:YES];
-//    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    
-    [self setupHUD];
-    // Add Pull to refresh to Table View
-    [self addPullToRefreshHeader];
-    [self addLeftSwipeGesture];
-    
-    UIImage *navCenter = [UIImage imageNamed:@"navCenter"];
-    UIImageView *titleView = [[UIImageView alloc] initWithImage:navCenter];
-    [self.navigationController.navigationBar.topItem setTitleView:titleView];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceDidRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
 }
 
 -(void) setupHUD

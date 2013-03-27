@@ -19,6 +19,7 @@
 #import "LSExploreLotCell.h"
 #import "LotDetailViewController.h"
 #import "MapLotViewController.h"
+#import "SecondViewController.h"
 #define REFRESH_HEADER_HEIGHT 52.0f
 
 FOUNDATION_EXPORT NSString *const LSAllLotsArchiveString;
