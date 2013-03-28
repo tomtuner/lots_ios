@@ -31,9 +31,30 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
     UITapGestureRecognizer *mapClick = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     [self.mapView addGestureRecognizer:mapClick];
+    NSLog(@"Lot Name: %@", self.lot.name);
+}
+
+-(void) viewWillDisappear:(BOOL)animated {
+    if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
+        // back button was pressed.  We know this is true because self is no longer
+        // in the navigation stack.
+        if([self.delegate respondsToSelector:@selector(addLotMapController:lotAnnotation:)])
+        {
+            LotAnnotation *tempAnnotation;
+            for (id<MKAnnotation> annotation in self.mapView.annotations) {
+                if ([annotation isKindOfClass:[LotAnnotation class]]) {
+                    tempAnnotation = annotation;
+                    break;
+                }
+            }
+            if (tempAnnotation) {
+                [self.delegate addLotMapController:self lotAnnotation:tempAnnotation];
+            }
+        }
+    }
+    [super viewWillDisappear:animated];
 }
 
 -(void) zoomToInitialLocation
@@ -50,14 +71,13 @@
 {
     [super viewDidAppear:animated];
     if (self.initialLocation) {
-        NSLog(@"1: %@", self.initialLocation);
         [self zoomToInitialLocation];
     }
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
-    if ( self.initialLocation != userLocation.location )
+    if ( !self.initialLocation)
     {
         self.initialLocation = userLocation.location;
         
@@ -84,14 +104,7 @@
     CGPoint touchPoint = [gestureRecognizer locationInView:self.mapView];
     CLLocationCoordinate2D touchMapCoordinate =
     [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
-    
-//    MKAnnotationView *annot = [[MKAnnotationView alloc] init];
-//    annot.coordinate = touchMapCoordinate;
-//    [self.mapView addAnnotation:annot];
-    
-//    CLLocationCoordinate2D coordinate;
-//    coordinate.latitude = self.lot.latitude;
-//    coordinate.longitude = self.lot.longitude;
+
     LotAnnotation *annotation = [[LotAnnotation alloc] initWithName:self.lot.name address:nil coordinate:touchMapCoordinate];
     
     [self.mapView addAnnotation:annotation];
@@ -99,13 +112,16 @@
 
 - (void)mapView:(MKMapView *)mv didAddAnnotationViews:(NSArray *)views
 {
-    MKAnnotationView *annotationView = [views objectAtIndex:0];
-    id<MKAnnotation> mp = [annotationView annotation];
-    //    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance([mp coordinate] ,350,350);
-    
-    //    [mv setRegion:region animated:YES];
-    
-    [self.mapView selectAnnotation:mp animated:YES];
+    LotAnnotation *tempAnnotation;
+    for (MKAnnotationView *annotationView in views) {
+        if ([annotationView.annotation isKindOfClass:[LotAnnotation class]]) {
+            tempAnnotation = annotationView.annotation;
+            break;
+        }
+    }
+    if (tempAnnotation) {
+        [self.mapView selectAnnotation:tempAnnotation animated:YES];
+    }
     
 }
 

@@ -23,7 +23,6 @@ static NSString * const kLSFlurryAPIKey = @"MKQ6CH3HVZ5HM9Y6NW2R";
     
     [ThemeManager customizeAppAppearance];
     [[LocationManager sharedLocationManager] startUpdates];
-    [Flurry startSession:kLSFlurryAPIKey];
     
     if (!([[NSUserDefaults standardUserDefaults] boolForKey:@"Development"])) {
         // Set the FlurryAnalytics session
@@ -38,11 +37,11 @@ static NSString * const kLSFlurryAPIKey = @"MKQ6CH3HVZ5HM9Y6NW2R";
 
 - (void) setupInitialTabBarController
 {
-    UIViewController *viewController1 = [[FirstViewController alloc] initWithNibName:@"FirstViewController" bundle:nil];
+    FirstViewController *viewController1 = [[FirstViewController alloc] initWithNibName:@"FirstViewController" bundle:nil];
     UINavigationController *navCont1 = [[UINavigationController alloc] initWithRootViewController:viewController1];
 //    UIViewController *viewController2 = [[SecondViewController alloc] initWithNibName:@"SecondViewController" bundle:nil];
 //    UINavigationController *navCont2 = [[UINavigationController alloc] initWithRootViewController:viewController2];
-    UIViewController *viewController3 = [[CreateLotViewController alloc] initWithNibName:@"CreateLotViewController" bundle:nil];
+    CreateLotViewController *viewController3 = [[CreateLotViewController alloc] initWithNibName:@"CreateLotViewController" bundle:nil];
     UINavigationController *navCont3 = [[UINavigationController alloc] initWithRootViewController:viewController3];
     self.tabBarController = [[UITabBarController alloc] init];
     self.tabBarController.viewControllers = @[navCont1, navCont3];
@@ -65,9 +64,11 @@ static NSString * const kLSFlurryAPIKey = @"MKQ6CH3HVZ5HM9Y6NW2R";
             NSLog(@"Exception unarchiving file.");
     	}
         CheckInViewController *checkIn = [[CheckInViewController alloc] initWithNibName:@"CheckInViewController" bundle:nil];
+        checkIn.shouldShowCancelButton = YES;
+        UINavigationController *navCont = [[UINavigationController alloc] initWithRootViewController:checkIn];
         checkIn.lot = [closestLots objectAtIndex:0];
         if (!self.tabBarController.presentedViewController) {
-            [self.tabBarController presentViewController:checkIn animated:YES completion:nil];
+            [self.tabBarController presentViewController:navCont animated:YES completion:nil];
         }
     }
 }

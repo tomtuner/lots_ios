@@ -11,7 +11,17 @@
 #import "LotAnnotation.h"
 #import "ExploreLots.h"
 
+@class AddLotViewController;
+
+@protocol LSCreateLotDelegate
+@required
+-(void)addLotMapController:(AddLotViewController *) controller lotAnnotation:(LotAnnotation *) annotation;
+
+@end
+
 @interface AddLotViewController : UIViewController
+
+@property(nonatomic,assign)id delegate;
 
 @property(nonatomic, strong) ExploreLots *lot;
 

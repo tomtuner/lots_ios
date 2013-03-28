@@ -31,4 +31,6 @@
 @property(nonatomic, strong) IBOutlet UIButton *quarterFullButton;
 @property(nonatomic, strong) IBOutlet UIButton *eightyFiveFullButton;
 
+@property(nonatomic, assign) BOOL shouldShowCancelButton;
+
 @end

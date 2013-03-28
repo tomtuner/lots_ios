@@ -11,6 +11,6 @@
 #import <QuartzCore/QuartzCore.h>
 #import "AddLotViewController.h"
 
-@interface CreateLotViewController : UIViewController
+@interface CreateLotViewController : UIViewController <LSCreateLotDelegate, UITextFieldDelegate>
 
 @end

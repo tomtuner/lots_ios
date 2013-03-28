@@ -17,6 +17,8 @@
 
 @property (nonatomic, strong) CLLocation *initialLocation;
 
+@property (nonatomic, strong) ExploreLots *lot;
+
 @property (nonatomic, strong) UIImageView *titleView;
 
 @end
@@ -39,6 +41,7 @@
         
         UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStyleDone target:self action:@selector(addClicked)];
         self.navigationItem.rightBarButtonItem = addButton;
+        _lot = [[ExploreLots alloc] init];
     }
     return self;
 }
@@ -66,10 +69,6 @@
     [self.mapView.layer setCornerRadius:5.0f];
     [self.mapView.layer setBorderColor:[UIColor lightGrayColor].CGColor];
     [self.mapView.layer setBorderWidth:1.0f];
-//    [self.mapView.layer setShadowColor:[UIColor blackColor].CGColor];
-//    [self.mapView.layer setShadowOpacity:0.8];
-//    [self.mapView.layer setShadowRadius:3.0];
-//    [self.mapView.layer setShadowOffset:CGSizeMake(1.0, 1.0)];
     
     UIView *mapOverlayView = [[UIView alloc] initWithFrame:CGRectMake(self.mapView.frame.origin.x, self.mapView.frame.origin.y, self.mapView.frame.size.width, 44)];
     // set the radius
@@ -101,6 +100,32 @@
     [self.view addSubview:mapOverlayView];
 }
 
+#pragma mark - LSCreateLotDelegate
+
+-(void)addLotMapController:(CreateLotViewController *) controller lotAnnotation:(LotAnnotation *)annotation
+{
+    NSLog(@"Annotation returned: %f", annotation.coordinate.latitude);
+    _lot.latitude = annotation.coordinate.latitude;
+    _lot.longitude = annotation.coordinate.longitude;
+    for (id<MKAnnotation> annotation in self.mapView.annotations) {
+        if (annotation != self.mapView.userLocation) {
+            [self.mapView removeAnnotation:annotation];
+        }
+    }
+    [self centerMapWithAnnotation:annotation];
+    [self.mapView addAnnotation:annotation];
+}
+
+- (void) centerMapWithAnnotation:(LotAnnotation *) annotation
+{
+    MKCoordinateRegion region;
+    region.center = annotation.coordinate;
+    region.span = MKCoordinateSpanMake(0.003, 0.003);
+    
+    region = [_mapView regionThatFits:region];
+    [_mapView setRegion:region animated:YES];
+}
+
 -(void) addClicked
 {
     NSLog(@"Add Clicked");
@@ -108,7 +133,6 @@
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
-    NSLog(@"Did Update to Location");
     if ( !self.initialLocation )
     {
         self.initialLocation = userLocation.location;
@@ -129,13 +153,11 @@
 
 - (void) mapViewSelected:(UIGestureRecognizer *) gestureRecognizer
 {
-    NSLog(@"Map Selected");
-    ExploreLots *lot = [[ExploreLots alloc] init];
-    lot.name = self.nameField.text;
+    _lot.name = self.nameField.text;
     AddLotViewController *lotController = [[AddLotViewController alloc] initWithNibName:@"AddLotViewController" bundle:nil];
-    lotController.lot = lot;
+    lotController.delegate = self;
+    lotController.lot = _lot;
     lotController.initialLocation = self.mapView.userLocation.location;
-    NSLog(@"%@", self.mapView.userLocation.location);
     [self.navigationController pushViewController:lotController animated:YES];
 }
 
@@ -143,6 +165,30 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)mapView:(MKMapView *)mv didAddAnnotationViews:(NSArray *)views
+{
+    LotAnnotation *tempAnnotation;
+    for (MKAnnotationView *annotationView in views) {
+        if ([annotationView.annotation isKindOfClass:[LotAnnotation class]]) {
+            tempAnnotation = annotationView.annotation;
+            break;
+        }
+    }
+    if (tempAnnotation) {
+        [self.mapView selectAnnotation:tempAnnotation animated:YES];
+    }
+    
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    
+    return YES;
 }
 
 

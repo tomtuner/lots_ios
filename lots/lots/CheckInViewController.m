@@ -23,6 +23,7 @@ static NSString * const kLSFlurryCheckInEvent = @"Check_In";
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
 //        _buttonArray = @[self.fullButton, self.halfButton, self.quarterFullButton, self.emptyButton, self.eightyFiveFullButton];
+        self.shouldShowCancelButton = NO;
     }
     return self;
 }
@@ -51,14 +52,17 @@ static NSString * const kLSFlurryCheckInEvent = @"Check_In";
     [super viewDidLoad];
     _buttonArray = @[self.fullButton, self.halfButton, self.quarterFullButton, self.emptyButton, self.eightyFiveFullButton];
 
+    if (self.shouldShowCancelButton) {
     // Do any additional setup after loading the view from its nib.
-    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
+        UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
                                                                      style:UIBarButtonItemStyleBordered
                                                                     target:self
                                                                     action:@selector(dismissView)];
+        self.navigationItem.leftBarButtonItem = cancelButton;
+    }
+
     self.navigationItem.title = self.lot.name;
     [self.navBar pushNavigationItem:self.navigationItem animated:NO];
-    self.navigationItem.leftBarButtonItem = cancelButton;
 //    [ThemeManager customizeButtonWithGrayBackground:self.fullButton];
     [self setupButtons];
     self.mapView.layer.masksToBounds = NO;

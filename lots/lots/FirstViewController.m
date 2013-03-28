@@ -11,6 +11,7 @@
 @interface FirstViewController ()
 
 @property(nonatomic, strong) UIImageView *titleView;
+@property(nonatomic, strong) UIBarButtonItem *checkInBarButton;
 
 @end
 
@@ -74,8 +75,10 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
     // Add Pull to refresh to Table View
     [self addPullToRefreshHeader];
     [self addLeftSwipeGesture];
-    
+
     [self addCheckInButton];
+    
+    [self checkShouldShowFooterView];
     
     UIImage *navCenter = [UIImage imageNamed:@"navCenter"];
     _titleView = [[UIImageView alloc] initWithImage:navCenter];
@@ -95,37 +98,20 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
 - (void) addCheckInButton
 {
     UIImage *buttonImage = [UIImage imageNamed:@"yellow_button_line"];
-    UIImage *checkInImage = [UIImage imageNamed:@"check_in_icon"];
-
-    UIImageView *buttonBackground = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 55, buttonImage.size.height)];
-    [buttonBackground setUserInteractionEnabled:YES];
-    
-    UITapGestureRecognizer *tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(checkInSelected)];
-    [buttonBackground addGestureRecognizer:tgr];
-    [buttonBackground setImage:buttonImage];
+    UIImage *buttonImageSelected = [UIImage imageNamed:@"yellow_button_line_selected"];
     
     UIButton *checkInButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    //    [checkInButton setBackgroundColor:[UIColor whiteColor]];
-    [checkInButton setBackgroundImage:checkInImage forState:UIControlStateNormal];
-    checkInButton.frame = CGRectMake(buttonImage.size.width/2 - checkInImage.size.width/2 + 5, buttonImage.size.height/2 - checkInImage.size.height/2, checkInImage.size.width, checkInImage.size.height);
-//    checkInButton.frame = CGRectMake(0, 0, buttonImage.size.width, 44);
+    [checkInButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
+    [checkInButton setBackgroundImage:buttonImageSelected forState:UIControlStateHighlighted];
 
-    checkInButton.layer.shadowColor = [[UIColor blackColor] CGColor];
-    checkInButton.layer.shadowOffset = CGSizeMake(1.0,1.0);
-//    checkInButton.layer.borderColor = [[UIColor blackColor] CGColor];
-//    checkInButton.layer.borderWidth = 1.0f;
-    checkInButton.layer.masksToBounds = NO;
-    checkInButton.layer.shadowOpacity = 1.0f;
-    checkInButton.layer.shadowRadius = 1.0f;
+    checkInButton.frame = CGRectMake(buttonImage.size.width/2, buttonImage.size.height/2, buttonImage.size.width, buttonImage.size.height);
     
-//    [checkInButton addGestureRecognizer:tgr];
     [checkInButton addTarget:self action:@selector(checkInSelected)
                 forControlEvents:UIControlEventTouchUpInside];
     
-    [buttonBackground addSubview:checkInButton];
     
-    UIBarButtonItem *checkInBarButton = [[UIBarButtonItem alloc]
-                                         initWithCustomView:buttonBackground];
+    _checkInBarButton = [[UIBarButtonItem alloc]
+                                         initWithCustomView:checkInButton];
     UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
                                        initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
                                        target:nil action:nil];
@@ -134,7 +120,7 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
     
     // Add the two buttons together on the left:
     self.navigationItem.rightBarButtonItems = [NSArray
-                                               arrayWithObjects: negativeSpacer, checkInBarButton, nil];
+                                               arrayWithObjects: negativeSpacer, _checkInBarButton, nil];
     
     
 }
@@ -280,6 +266,8 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
             }
             [[self lotExploreTable] reloadData];
             
+            [self checkShouldShowFooterView];
+            
             // Save our new scans out to the archive file
             NSString *documentsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                                           NSUserDomainMask, YES) objectAtIndex:0];
@@ -289,6 +277,19 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
         
         [self performSelector:@selector(closeHUDDisplay) withObject:nil afterDelay:2.0];
     }];
+}
+
+-(void) checkShouldShowFooterView
+{
+    if (lotArray.count == 0) {
+        self.lotFooterView.hidden = NO;
+        [_checkInBarButton setEnabled:NO];
+//        self.navigationItem.rightBarButtonItem.enabled = NO;
+    }else {
+        self.lotFooterView.hidden = YES;
+        [_checkInBarButton setEnabled:YES];
+//        self.navigationItem.rightBarButtonItem.enabled = YES;
+    }
 }
 
 -(void) setupHUD
@@ -478,6 +479,19 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
     NSLog(@"Array Count: %i", [lotArray count]);
 	return [lotArray count];
 }
+
+- (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    
+    // Return a negligibly small value that way viewForFooterInSection method loads
+    return 0.000001f;
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    
+    // Return a negligibly small value that way viewForFooterInSection method loads
+    return 0.000001f;
+}
+
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -514,6 +528,45 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
     
 }
 */
+/*
+- (UIView *) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    
+    static UIView *footerView;
+    
+    // Don't do anything if the footerview is already set
+    if (!footerView) {
+        if (lotArray.count == 0) {
+            if (footerView != nil) {
+                self.lotExploreTable.tableFooterView = footerView;
+            }else {
+                
+                NSString *footerText = @"No parking lots found, create one!";
+                
+                footerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.lotExploreTable.frame.size.width, 44.0f)];
+                
+                float padding = 10.0f; // an arbitrary amount to center the label in the container
+                
+                footerView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+                
+                // create the label centered in the container, then set the appropriate autoresize mask
+                UILabel *footerLabel = [[UILabel alloc] initWithFrame:CGRectMake(padding, 0, self.lotExploreTable.frame.size.width - 2.0f * padding, 44.0f)];
+                [footerLabel setBackgroundColor:[UIColor clearColor]];
+                [footerLabel setTextColor:[UIColor whiteColor]];
+                [footerLabel setFont:[UIFont fontWithName:@"Palatino-Bold" size:16.0f]];
+                
+                footerLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+                footerLabel.textAlignment = NSTextAlignmentCenter;
+                footerLabel.text = footerText;
+                
+                [footerView addSubview:footerLabel];
+                self.lotExploreTable.tableFooterView = footerView;
+            }
+        }
+    }
+    return nil;
+}
+*/
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     LSExploreLotCell *customCell = (LSExploreLotCell *)[tableView dequeueReusableCellWithIdentifier:@"LSExploreCell"];
     if (customCell == nil) {
@@ -535,7 +588,12 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
     ExploreLots *exLots = [lotArray objectAtIndex:indexPath.row];
     //    NSLog(@"Lot Name: %@", exLots.name);
     customCell.lotName.text = exLots.name;
-    customCell.lotOccupancy.text = [NSString stringWithFormat:@"%@%%",[[NSNumber numberWithFloat:exLots.estimatedOccupancy] stringValue]];
+    if (exLots.estimatedOccupancy != 0) {
+        customCell.lotOccupancy.text = [NSString stringWithFormat:@"%@%%",[[NSNumber numberWithFloat:exLots.estimatedOccupancy] stringValue]];
+    }else {
+        customCell.lotOccupancy.text = [NSString stringWithFormat:@"N/A"];
+    }
+        
     customCell.lotDistance.text = [NSString stringWithFormat:@"%.2f mi", (exLots.distance * 0.621371)];
 //    cell.detailTextLabel.text = [[NSNumber numberWithFloat:exLots.averageOccupancy] stringValue];
 //    [cell setBackgroundColor:[UIColor colorWithRed:0.8784313725 green:0.8784313725 blue:0.7764705882 alpha:1.0]];

@@ -20,6 +20,7 @@
 #import "LotDetailViewController.h"
 #import "MapLotViewController.h"
 #import "SecondViewController.h"
+#import "LotFooterView.h"
 #define REFRESH_HEADER_HEIGHT 52.0f
 
 FOUNDATION_EXPORT NSString *const LSAllLotsArchiveString;
@@ -47,6 +48,8 @@ FOUNDATION_EXPORT NSString *const LSAllLotsArchiveString;
 @property (nonatomic, copy) NSString *textPull;
 @property (nonatomic, copy) NSString *textRelease;
 @property (nonatomic, copy) NSString *textLoading;
+
+@property (nonatomic, strong) IBOutlet UIView *lotFooterView;
 
 // Table View Methods for pull to refresh
 - (void)setupStrings;
