@@ -133,7 +133,11 @@ static NSString * const kLSFlurryCheckInEvent = @"Check_In";
     
     [CheckInLot globalCheckInToLotWithLotID:self.lot.lotID withOccupancy:occupancySelected withBlock:^(NSArray *lot, NSError *error) {
         if (!error) {
-            [Flurry logEvent:kLSFlurryCheckInEvent];
+            if (!([[NSUserDefaults standardUserDefaults] boolForKey:@"Development"])) {
+
+                NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%i", self.lot.lotID], @"LotID", nil];
+                [Flurry logEvent:kLSFlurryCheckInEvent withParameters:dictionary];
+            }
             [self dismissViewWithAchievementCheck];
         }
     }];

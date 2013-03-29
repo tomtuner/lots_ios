@@ -22,6 +22,10 @@ static NSString * const kLSFlurryAPIKey = @"MKQ6CH3HVZ5HM9Y6NW2R";
     self.window.rootViewController = self.tabBarController;
     
     [ThemeManager customizeAppAppearance];
+    
+    NSDictionary *defaults = [[NSDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"defaults" ofType:@"plist"]];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
+    
     [[LocationManager sharedLocationManager] startUpdates];
     
     if (!([[NSUserDefaults standardUserDefaults] boolForKey:@"Development"])) {

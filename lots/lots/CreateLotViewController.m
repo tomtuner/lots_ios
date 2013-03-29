@@ -18,10 +18,13 @@
 @property (nonatomic, strong) CLLocation *initialLocation;
 
 @property (nonatomic, strong) ExploreLots *lot;
-
 @property (nonatomic, strong) UIImageView *titleView;
 
+@property (nonatomic, strong) LotAnnotation *lotAnnotation;
+
 @end
+
+static NSString * const kLSFlurryCreateLotEvent = @"Create_lot";
 
 @implementation CreateLotViewController
 
@@ -104,7 +107,7 @@
 
 -(void)addLotMapController:(CreateLotViewController *) controller lotAnnotation:(LotAnnotation *)annotation
 {
-    NSLog(@"Annotation returned: %f", annotation.coordinate.latitude);
+    _lotAnnotation = annotation;
     _lot.latitude = annotation.coordinate.latitude;
     _lot.longitude = annotation.coordinate.longitude;
     for (id<MKAnnotation> annotation in self.mapView.annotations) {
@@ -129,6 +132,16 @@
 -(void) addClicked
 {
     NSLog(@"Add Clicked");
+    
+    _lot.name = self.nameField.text;
+    _lot.latitude = _lotAnnotation.coordinate.latitude;
+    _lot.longitude = _lotAnnotation.coordinate.longitude;
+
+    if (!([[NSUserDefaults standardUserDefaults] boolForKey:@"Development"])) {
+
+        NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys: _lot.name, @"LotName", [NSString stringWithFormat:@"%f", _lot.latitude], @"Latitude", [NSString stringWithFormat:@"%f", _lot.longitude], @"Longitude", nil];    
+        [Flurry logEvent:kLSFlurryCreateLotEvent withParameters:dictionary];
+    }
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
@@ -165,21 +178,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)mapView:(MKMapView *)mv didAddAnnotationViews:(NSArray *)views
-{
-    LotAnnotation *tempAnnotation;
-    for (MKAnnotationView *annotationView in views) {
-        if ([annotationView.annotation isKindOfClass:[LotAnnotation class]]) {
-            tempAnnotation = annotationView.annotation;
-            break;
-        }
-    }
-    if (tempAnnotation) {
-        [self.mapView selectAnnotation:tempAnnotation animated:YES];
-    }
-    
 }
 
 #pragma mark - UITextFieldDelegate

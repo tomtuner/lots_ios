@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1F9E71B09FA44ADFA67A4EF8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21B48F20FF2446CC82F0F521 /* libPods.a */; };
+		E914E9B6170539690050D7B9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E914E9B5170539690050D7B9 /* Default-568h@2x.png */; };
+		E914E9B8170539700050D7B9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E914E9B7170539700050D7B9 /* Default@2x.png */; };
+		E914E9BA170539750050D7B9 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E914E9B9170539750050D7B9 /* Default.png */; };
 		E915AE2316FBCA6A000FC410 /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E915AE2216FBCA6A000FC410 /* libFlurry.a */; };
 		E915AE2516FBD99F000FC410 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = E915AE2416FBD99F000FC410 /* defaults.plist */; };
 		E915AE291700B6E0000FC410 /* CreateLotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E915AE271700B6E0000FC410 /* CreateLotViewController.m */; };
@@ -68,9 +71,6 @@
 		E9B2F0A016EE4C6100976D0E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9B2F09E16EE4C6100976D0E /* InfoPlist.strings */; };
 		E9B2F0A216EE4C6100976D0E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2F0A116EE4C6100976D0E /* main.m */; };
 		E9B2F0A616EE4C6100976D0E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2F0A516EE4C6100976D0E /* AppDelegate.m */; };
-		E9B2F0A816EE4C6100976D0E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B2F0A716EE4C6100976D0E /* Default.png */; };
-		E9B2F0AA16EE4C6100976D0E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B2F0A916EE4C6100976D0E /* Default@2x.png */; };
-		E9B2F0AC16EE4C6100976D0E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B2F0AB16EE4C6100976D0E /* Default-568h@2x.png */; };
 		E9B2F0AF16EE4C6100976D0E /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2F0AE16EE4C6100976D0E /* FirstViewController.m */; };
 		E9B2F0B616EE4C6100976D0E /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2F0B516EE4C6100976D0E /* SecondViewController.m */; };
 		E9B2F0BD16EE4C6100976D0E /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9B2F0BB16EE4C6100976D0E /* FirstViewController.xib */; };
@@ -99,6 +99,9 @@
 /* Begin PBXFileReference section */
 		21B48F20FF2446CC82F0F521 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AD52480A6C54F208D21A4F7 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		E914E9B5170539690050D7B9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		E914E9B7170539700050D7B9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		E914E9B9170539750050D7B9 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		E915AE2116FBCA6A000FC410 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		E915AE2216FBCA6A000FC410 /* libFlurry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry.a; sourceTree = "<group>"; };
 		E915AE2416FBD99F000FC410 /* defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaults.plist; sourceTree = "<group>"; };
@@ -173,9 +176,6 @@
 		E9B2F0A316EE4C6100976D0E /* lots-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "lots-Prefix.pch"; sourceTree = "<group>"; };
 		E9B2F0A416EE4C6100976D0E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E9B2F0A516EE4C6100976D0E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E9B2F0A716EE4C6100976D0E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		E9B2F0A916EE4C6100976D0E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		E9B2F0AB16EE4C6100976D0E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		E9B2F0AD16EE4C6100976D0E /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		E9B2F0AE16EE4C6100976D0E /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		E9B2F0B416EE4C6100976D0E /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
@@ -234,6 +234,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E914E9B41705395B0050D7B9 /* launch_images */ = {
+			isa = PBXGroup;
+			children = (
+				E914E9B9170539750050D7B9 /* Default.png */,
+				E914E9B7170539700050D7B9 /* Default@2x.png */,
+				E914E9B5170539690050D7B9 /* Default-568h@2x.png */,
+			);
+			name = launch_images;
+			sourceTree = "<group>";
+		};
 		E915AE2016FBCA6A000FC410 /* Flurry */ = {
 			isa = PBXGroup;
 			children = (
@@ -348,9 +358,6 @@
 				E9B2F09E16EE4C6100976D0E /* InfoPlist.strings */,
 				E9B2F0A116EE4C6100976D0E /* main.m */,
 				E9B2F0A316EE4C6100976D0E /* lots-Prefix.pch */,
-				E9B2F0A716EE4C6100976D0E /* Default.png */,
-				E9B2F0A916EE4C6100976D0E /* Default@2x.png */,
-				E9B2F0AB16EE4C6100976D0E /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -358,6 +365,7 @@
 		E9B2F0C816EE512700976D0E /* lots_resources */ = {
 			isa = PBXGroup;
 			children = (
+				E914E9B41705395B0050D7B9 /* launch_images */,
 				E98C13891703F42D00BD66F7 /* yellow_button_line_selected.png */,
 				E98C138A1703F42D00BD66F7 /* yellow_button_line_selected@2x.png */,
 				E98C138B1703F42D00BD66F7 /* yellow_button_line.png */,
@@ -530,9 +538,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9B2F0A016EE4C6100976D0E /* InfoPlist.strings in Resources */,
-				E9B2F0A816EE4C6100976D0E /* Default.png in Resources */,
-				E9B2F0AA16EE4C6100976D0E /* Default@2x.png in Resources */,
-				E9B2F0AC16EE4C6100976D0E /* Default-568h@2x.png in Resources */,
 				E9B2F0BD16EE4C6100976D0E /* FirstViewController.xib in Resources */,
 				E9B2F0C016EE4C6100976D0E /* SecondViewController.xib in Resources */,
 				E9B2F0CC16EE54EF00976D0E /* didact_gothic.ttf in Resources */,
@@ -583,6 +588,9 @@
 				E98C138E1703F42D00BD66F7 /* yellow_button_line_selected@2x.png in Resources */,
 				E98C138F1703F42D00BD66F7 /* yellow_button_line.png in Resources */,
 				E98C13901703F42D00BD66F7 /* yellow_button_line@2x.png in Resources */,
+				E914E9B6170539690050D7B9 /* Default-568h@2x.png in Resources */,
+				E914E9B8170539700050D7B9 /* Default@2x.png in Resources */,
+				E914E9BA170539750050D7B9 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
