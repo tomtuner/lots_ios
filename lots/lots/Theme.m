@@ -134,6 +134,13 @@
 
     [navigationBarAppearance setTitleTextAttributes:titleTextAttributes];
     [barButtonItemAppearance setTitleTextAttributes:titleTextAttributes forState:UIControlStateNormal];
+//    UIColor *bgColor = [theme backgroundColor];
+    //    UIColor *mainColor = nil;
+//    if (bgColor) {
+//        [titleTextAttributes setObject:bgColor forKey:UITextAttributeTextColor];
+//    }
+    [barButtonItemAppearance setTitleTextAttributes:titleTextAttributes forState:UIControlStateDisabled];
+
 //    [barButtonItemAppearance setTitleTextAttributes:titleTextAttributes forState:UIControlStateHighlighted];
     [segmentedAppearance setTitleTextAttributes:titleTextAttributes forState:UIControlStateNormal];
     [searchBarAppearance setScopeBarButtonTitleTextAttributes:titleTextAttributes forState:UIControlStateNormal];

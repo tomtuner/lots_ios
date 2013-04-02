@@ -23,7 +23,15 @@ static NSString * const kLSFlurryAPIKey = @"MKQ6CH3HVZ5HM9Y6NW2R";
     
     [ThemeManager customizeAppAppearance];
     
-    NSDictionary *defaults = [[NSDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"defaults" ofType:@"plist"]];
+    
+    NSString *buildSuffix = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"];
+    NSDictionary *defaults;
+    NSLog(@"%@", buildSuffix);
+    if ([buildSuffix isEqualToString:@"Lots"]) {
+        defaults = [[NSDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"defaults" ofType:@"plist"]];
+    }else {
+        defaults = [[NSDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"defaults_dev" ofType:@"plist"]];
+    }
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
     
     [[LocationManager sharedLocationManager] startUpdates];

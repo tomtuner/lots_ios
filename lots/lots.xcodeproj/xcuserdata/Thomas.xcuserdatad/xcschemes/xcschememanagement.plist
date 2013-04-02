@@ -4,7 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>lots.xcscheme</key>
+		<key>Lots Debug.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>Lots.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,6 +17,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>E914E9BB170A6E6E0050D7B9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>E9B2F09116EE4C6100976D0E</key>
 		<dict>
 			<key>primary</key>

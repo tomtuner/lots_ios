@@ -66,7 +66,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
 //    [self.lotCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"LSCollectionViewCell"];
 
-    [self addRightSwipeGesture];
+//    [self addRightSwipeGesture];
     [self.lotCollectionView registerClass:[LSCheckInCell class] forCellWithReuseIdentifier:@"LSCheckInCell"];
     
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
@@ -149,8 +149,12 @@
     // Dispose of any resources that can be recreated.
 }
 
--(NSUInteger) supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskPortrait;
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    if (interfaceOrientation==UIInterfaceOrientationPortrait)
+        return YES;
+    
+    return NO;
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -169,55 +173,6 @@
 
 }
 
-- (void)deviceDidRotate:(NSNotification *)notification
-{
-    UIDeviceOrientation currentOrientation = [[UIDevice currentDevice] orientation];
-    double rotation = 0;
-    UIInterfaceOrientation statusBarOrientation;
-    switch (currentOrientation) {
-        case UIDeviceOrientationFaceDown:
-        case UIDeviceOrientationFaceUp:
-        case UIDeviceOrientationUnknown:
-            return;
-        case UIDeviceOrientationPortrait:
-            [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
-            if ([self.view.window viewWithTag:101]) {
-                [self.mapView removeFromSuperview];
-            }else {
-                return;
-            }
-            break;
-        case UIDeviceOrientationPortraitUpsideDown:
-            break;
-        case UIDeviceOrientationLandscapeLeft:
-            rotation = M_PI_2;
-            statusBarOrientation = UIInterfaceOrientationLandscapeRight;
-            [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
-            [self.mapView setFrame:CGRectMake(self.view.window.bounds.origin.x, self.view.bounds.origin.y, self.view.window.bounds.size.width, self.view.window.bounds.size.height)];
-            if (![self.view.window viewWithTag:101]) {
-                [self.view.window addSubview:self.mapView];
-            }else {
-                return;
-            }
-            break;
-        case UIDeviceOrientationLandscapeRight:
-            rotation = -M_PI_2;
-            statusBarOrientation = UIInterfaceOrientationLandscapeLeft;
-            [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
-            [self.mapView setFrame:CGRectMake(self.view.window.bounds.origin.x, self.view.window.bounds.origin.y, self.view.window.bounds.size.width, self.view.window.bounds.size.height)];
-            if (![self.view.window viewWithTag:101]) {
-                [self.view.window addSubview:self.mapView];
-            }
-            break;
-    }
-    CGAffineTransform transform = CGAffineTransformMakeRotation(rotation);
-    [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-        [self.mapView setTransform:transform];
-        [self.mapView setFrame:CGRectMake(self.view.window.bounds.origin.x, self.view.window.bounds.origin.y, self.view.window.bounds.size.width, self.view.window.bounds.size.height)];
-    } completion:^(BOOL finished) {
-        [self plotLotPositions];
-    }];
-}
 
 - (void)plotLotPositions {
     
@@ -335,7 +290,7 @@
     // Show the header
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.3];
-    self.lotCollectionView.contentInset = UIEdgeInsetsMake(REFRESH_HEADER_HEIGHT, 0, 0, 0);
+    self.lotCollectionView.contentInset = UIEdgeInsetsMake(1.0f, 0, 0, 0);
     _refreshLabel.text = self.textLoading;
     _refreshArrow.hidden = YES;
     [_refreshSpinner startAnimating];
@@ -390,7 +345,7 @@
 // 3
 - (UIEdgeInsets)collectionView:
 (UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(75, 20, 75, 20);
+    return UIEdgeInsetsMake(50, 20, 75, 20);
 }
 
 #pragma mark - UICollectionView Datasource

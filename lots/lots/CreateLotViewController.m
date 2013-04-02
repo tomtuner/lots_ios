@@ -22,6 +22,8 @@
 
 @property (nonatomic, strong) LotAnnotation *lotAnnotation;
 
+@property (nonatomic, strong) UIBarButtonItem *addButton;
+
 @end
 
 static NSString * const kLSFlurryCreateLotEvent = @"Create_lot";
@@ -42,11 +44,37 @@ static NSString * const kLSFlurryCreateLotEvent = @"Create_lot";
         
         [self.view addGestureRecognizer:tap];
         
-        UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStyleDone target:self action:@selector(addClicked)];
-        self.navigationItem.rightBarButtonItem = addButton;
+        self.addButton = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStyleDone target:self action:@selector(addClicked)];
+        self.navigationItem.rightBarButtonItem = self.addButton;
+        self.navigationItem.rightBarButtonItem.enabled = NO;
         _lot = [[ExploreLots alloc] init];
+        
+        [self addButtonVisuals];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldChange) name:UITextFieldTextDidChangeNotification object:self.nameField];
     }
     return self;
+}
+
+-(NSUInteger) supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+- (void) addButtonVisuals
+{
+    UIColor *bgColor = [[ThemeManager sharedTheme] backgroundColor];
+    UIColor *mainColor = [[ThemeManager sharedTheme] mainColor];
+
+    NSMutableDictionary *titleTextAttributes = [[NSMutableDictionary alloc] init];
+    if (bgColor) {
+        [titleTextAttributes setObject:bgColor forKey:UITextAttributeTextColor];
+    }
+    [self.addButton setTitleTextAttributes:titleTextAttributes forState:UIControlStateDisabled];
+    
+    if (mainColor) {
+        [titleTextAttributes setObject:mainColor forKey:UITextAttributeTextColor];
+    }
+    [self.addButton setTitleTextAttributes:titleTextAttributes forState:UIControlStateNormal];
 }
 
 - (void)viewDidLoad
@@ -101,6 +129,18 @@ static NSString * const kLSFlurryCreateLotEvent = @"Create_lot";
     [mapOverlayView addSubview:mapOverlayLabel];
     
     [self.view addSubview:mapOverlayView];
+    [self checkShouldEnableAddButton];
+}
+
+-(void) checkShouldEnableAddButton
+{
+    if (_lotAnnotation && (self.nameField.text.length != 0)) {
+//        self.addButton.tintColor = [self.addButton.tintColor colorWithAlphaComponent:1.0];
+         [self.navigationItem.rightBarButtonItem setEnabled:YES];
+    }else {
+//        self.addButton.tintColor = [self.addButton.tintColor colorWithAlphaComponent:0.4];
+        [self.navigationItem.rightBarButtonItem setEnabled:NO];
+    }
 }
 
 #pragma mark - LSCreateLotDelegate
@@ -117,6 +157,7 @@ static NSString * const kLSFlurryCreateLotEvent = @"Create_lot";
     }
     [self centerMapWithAnnotation:annotation];
     [self.mapView addAnnotation:annotation];
+    [self checkShouldEnableAddButton];
 }
 
 - (void) centerMapWithAnnotation:(LotAnnotation *) annotation
@@ -137,11 +178,30 @@ static NSString * const kLSFlurryCreateLotEvent = @"Create_lot";
     _lot.latitude = _lotAnnotation.coordinate.latitude;
     _lot.longitude = _lotAnnotation.coordinate.longitude;
 
-    if (!([[NSUserDefaults standardUserDefaults] boolForKey:@"Development"])) {
-
-        NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys: _lot.name, @"LotName", [NSString stringWithFormat:@"%f", _lot.latitude], @"Latitude", [NSString stringWithFormat:@"%f", _lot.longitude], @"Longitude", nil];    
-        [Flurry logEvent:kLSFlurryCreateLotEvent withParameters:dictionary];
-    }
+    [ExploreLots globalCreateLotWithLotName:_lot.name withLatitude:_lot.latitude withLongitude:_lot.longitude withBlock:^(NSArray *lot, NSError *error) {
+        if (!error) {
+            if (!([[NSUserDefaults standardUserDefaults] boolForKey:@"Development"])) {
+                
+                NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys: _lot.name, @"LotName", [NSString stringWithFormat:@"%f", _lot.latitude], @"Latitude", [NSString stringWithFormat:@"%f", _lot.longitude], @"Longitude", nil];
+                [Flurry logEvent:kLSFlurryCreateLotEvent withParameters:dictionary];
+            }
+            
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Lot Successfully Created"
+                                                              message:[NSString stringWithFormat:@"%@ has been created, start checking in!", _lot.name]
+                                                             delegate:nil
+                                                    cancelButtonTitle:@"OK"
+                                                    otherButtonTitles:nil];
+            [message show];
+            
+            self.nameField.text = @"";
+            for (id<MKAnnotation> annotation in self.mapView.annotations) {
+                if (annotation != self.mapView.userLocation) {
+                    [self.mapView removeAnnotation:annotation];
+                }
+            }
+            [self checkShouldEnableAddButton];
+        }
+    }];
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
@@ -171,6 +231,7 @@ static NSString * const kLSFlurryCreateLotEvent = @"Create_lot";
     lotController.delegate = self;
     lotController.lot = _lot;
     lotController.initialLocation = self.mapView.userLocation.location;
+    [self dismissKeyboard];
     [self.navigationController pushViewController:lotController animated:YES];
 }
 
@@ -187,6 +248,11 @@ static NSString * const kLSFlurryCreateLotEvent = @"Create_lot";
     [textField resignFirstResponder];
     
     return YES;
+}
+
+-(void) textFieldChange
+{
+    [self checkShouldEnableAddButton];
 }
 
 

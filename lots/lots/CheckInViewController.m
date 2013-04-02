@@ -63,7 +63,6 @@ static NSString * const kLSFlurryCheckInEvent = @"Check_In";
 
     self.navigationItem.title = self.lot.name;
     [self.navBar pushNavigationItem:self.navigationItem animated:NO];
-//    [ThemeManager customizeButtonWithGrayBackground:self.fullButton];
     [self setupButtons];
     self.mapView.layer.masksToBounds = NO;
     self.mapView.layer.cornerRadius = 3.0f;
@@ -71,8 +70,6 @@ static NSString * const kLSFlurryCheckInEvent = @"Check_In";
     self.mapView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
     self.mapView.layer.shadowOffset = CGSizeMake(0.0f, 5.0f);
     self.mapView.layer.shadowRadius = 5.0f;
-    UIBezierPath *path = [UIBezierPath bezierPathWithRect:self.mapView.bounds];
-    self.mapView.layer.shadowPath = path.CGPath;
 }
 
 -(void) setupButtons
@@ -121,6 +118,8 @@ static NSString * const kLSFlurryCheckInEvent = @"Check_In";
 
 -(IBAction)checkInSelected
 {
+    [self disableCheckInButton];
+
     UIButton *currentButton;
     for (UIButton *tempButton in _buttonArray) {
         if (tempButton.isSelected) {

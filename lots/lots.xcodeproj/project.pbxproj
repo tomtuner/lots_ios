@@ -11,6 +11,92 @@
 		E914E9B6170539690050D7B9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E914E9B5170539690050D7B9 /* Default-568h@2x.png */; };
 		E914E9B8170539700050D7B9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E914E9B7170539700050D7B9 /* Default@2x.png */; };
 		E914E9BA170539750050D7B9 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E914E9B9170539750050D7B9 /* Default.png */; };
+		E914E9BD170A6E6E0050D7B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2F0A116EE4C6100976D0E /* main.m */; };
+		E914E9BE170A6E6E0050D7B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2F0A516EE4C6100976D0E /* AppDelegate.m */; };
+		E914E9BF170A6E6E0050D7B9 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2F0AE16EE4C6100976D0E /* FirstViewController.m */; };
+		E914E9C0170A6E6E0050D7B9 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2F0B516EE4C6100976D0E /* SecondViewController.m */; };
+		E914E9C1170A6E6E0050D7B9 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2F0CE16EE553400976D0E /* Theme.m */; };
+		E914E9C2170A6E6E0050D7B9 /* RITTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2F0D016EE553400976D0E /* RITTheme.m */; };
+		E914E9C3170A6E6E0050D7B9 /* AFLotsAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2F10F16EE5DD100976D0E /* AFLotsAPIClient.m */; };
+		E914E9C4170A6E6E0050D7B9 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2F11316EE61C000976D0E /* LocationManager.m */; };
+		E914E9C5170A6E6E0050D7B9 /* Notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2F11916EE6B0B00976D0E /* Notifications.m */; };
+		E914E9C6170A6E6E0050D7B9 /* ExploreLots.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2F11C16EFB30900976D0E /* ExploreLots.m */; };
+		E914E9C7170A6E6E0050D7B9 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2F12016EFFD2700976D0E /* MBProgressHUD.m */; };
+		E914E9C8170A6E6E0050D7B9 /* CheckInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2F12516F01E6200976D0E /* CheckInViewController.m */; };
+		E914E9C9170A6E6E0050D7B9 /* LotAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2F12D16F030A000976D0E /* LotAnnotation.m */; };
+		E914E9CA170A6E6E0050D7B9 /* CheckInLot.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2F13016F0418500976D0E /* CheckInLot.m */; };
+		E914E9CB170A6E6E0050D7B9 /* LSExploreLotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2F13316F0FE8000976D0E /* LSExploreLotCell.m */; };
+		E914E9CC170A6E6E0050D7B9 /* LotDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2F13816F172C600976D0E /* LotDetailViewController.m */; };
+		E914E9CD170A6E6E0050D7B9 /* LSCheckInCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E975C81216F2274F00AF4AB6 /* LSCheckInCell.m */; };
+		E914E9CE170A6E6E0050D7B9 /* LotMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E975C81F16F3638D00AF4AB6 /* LotMapViewController.m */; };
+		E914E9CF170A6E6E0050D7B9 /* MapLotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E975C82216F37E6000AF4AB6 /* MapLotViewController.m */; };
+		E914E9D0170A6E6E0050D7B9 /* AchievementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E975C84C16F3F32F00AF4AB6 /* AchievementsViewController.m */; };
+		E914E9D1170A6E6E0050D7B9 /* CreateLotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E915AE271700B6E0000FC410 /* CreateLotViewController.m */; };
+		E914E9D2170A6E6E0050D7B9 /* WildcardGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = E915AE2C1700C960000FC410 /* WildcardGestureRecognizer.m */; };
+		E914E9D3170A6E6E0050D7B9 /* AddLotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E915AE2F1700CF4E000FC410 /* AddLotViewController.m */; };
+		E914E9D4170A6E6E0050D7B9 /* LotFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = E98C137C1703C06F00BD66F7 /* LotFooterView.m */; };
+		E914E9D5170A6E6E0050D7B9 /* LotsCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = E98C137F1703C0EF00BD66F7 /* LotsCommon.m */; };
+		E914E9D7170A6E6E0050D7B9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9B2F12916F0206100976D0E /* MapKit.framework */; };
+		E914E9D8170A6E6E0050D7B9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9B2F12216EFFF0700976D0E /* QuartzCore.framework */; };
+		E914E9D9170A6E6E0050D7B9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9B2F11516EE661900976D0E /* CoreLocation.framework */; };
+		E914E9DA170A6E6E0050D7B9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9B2F09516EE4C6100976D0E /* UIKit.framework */; };
+		E914E9DB170A6E6E0050D7B9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9B2F09716EE4C6100976D0E /* Foundation.framework */; };
+		E914E9DC170A6E6E0050D7B9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9B2F09916EE4C6100976D0E /* CoreGraphics.framework */; };
+		E914E9DD170A6E6E0050D7B9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21B48F20FF2446CC82F0F521 /* libPods.a */; };
+		E914E9DE170A6E6E0050D7B9 /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E915AE2216FBCA6A000FC410 /* libFlurry.a */; };
+		E914E9E0170A6E6E0050D7B9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9B2F09E16EE4C6100976D0E /* InfoPlist.strings */; };
+		E914E9E1170A6E6E0050D7B9 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9B2F0BB16EE4C6100976D0E /* FirstViewController.xib */; };
+		E914E9E2170A6E6E0050D7B9 /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9B2F0BE16EE4C6100976D0E /* SecondViewController.xib */; };
+		E914E9E3170A6E6E0050D7B9 /* didact_gothic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9B2F0CB16EE54EF00976D0E /* didact_gothic.ttf */; };
+		E914E9E4170A6E6E0050D7B9 /* CheckInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9B2F12616F01E6200976D0E /* CheckInViewController.xib */; };
+		E914E9E5170A6E6E0050D7B9 /* LSExploreLotCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9B2F13516F0FE9200976D0E /* LSExploreLotCell.xib */; };
+		E914E9E6170A6E6E0050D7B9 /* LotDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9B2F13916F172C700976D0E /* LotDetailViewController.xib */; };
+		E914E9E7170A6E6E0050D7B9 /* LotsTabBarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C80B16F1A30800AF4AB6 /* LotsTabBarBackground@2x.png */; };
+		E914E9E8170A6E6E0050D7B9 /* LotsTabBarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C80D16F1A39300AF4AB6 /* LotsTabBarBackground.png */; };
+		E914E9EA170A6E6E0050D7B9 /* LSCheckInCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E975C81416F2275F00AF4AB6 /* LSCheckInCell.xib */; };
+		E914E9EB170A6E6E0050D7B9 /* back_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C81616F24AEC00AF4AB6 /* back_arrow.png */; };
+		E914E9EC170A6E6E0050D7B9 /* back_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C81716F24AEC00AF4AB6 /* back_arrow@2x.png */; };
+		E914E9ED170A6E6E0050D7B9 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C81A16F2D3D900AF4AB6 /* Icon.png */; };
+		E914E9EE170A6E6E0050D7B9 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C81B16F2D3D900AF4AB6 /* Icon@2x.png */; };
+		E914E9EF170A6E6E0050D7B9 /* MapLotViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E975C82316F37E6000AF4AB6 /* MapLotViewController.xib */; };
+		E914E9F0170A6E6E0050D7B9 /* gray_button.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C82A16F3B79100AF4AB6 /* gray_button.png */; };
+		E914E9F1170A6E6E0050D7B9 /* gray_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C82B16F3B79100AF4AB6 /* gray_button@2x.png */; };
+		E914E9F2170A6E6E0050D7B9 /* magnifier.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C82E16F3C15A00AF4AB6 /* magnifier.png */; };
+		E914E9F3170A6E6E0050D7B9 /* magnifier@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C82F16F3C15A00AF4AB6 /* magnifier@2x.png */; };
+		E914E9F4170A6E6E0050D7B9 /* flag.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C83216F3C3E500AF4AB6 /* flag.png */; };
+		E914E9F5170A6E6E0050D7B9 /* flag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C83316F3C3E500AF4AB6 /* flag@2x.png */; };
+		E914E9F6170A6E6E0050D7B9 /* navBG.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C83616F3D39D00AF4AB6 /* navBG.png */; };
+		E914E9F7170A6E6E0050D7B9 /* navBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C83716F3D39D00AF4AB6 /* navBG@2x.png */; };
+		E914E9F8170A6E6E0050D7B9 /* car@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C83A16F3D45000AF4AB6 /* car@2x.png */; };
+		E914E9F9170A6E6E0050D7B9 /* car.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C83B16F3D45000AF4AB6 /* car.png */; };
+		E914E9FA170A6E6E0050D7B9 /* navCenter.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C83E16F3D65B00AF4AB6 /* navCenter.png */; };
+		E914E9FB170A6E6E0050D7B9 /* navCenter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C83F16F3D65B00AF4AB6 /* navCenter@2x.png */; };
+		E914E9FC170A6E6E0050D7B9 /* header_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C84216F3E62800AF4AB6 /* header_icon.png */; };
+		E914E9FD170A6E6E0050D7B9 /* header_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C84316F3E62800AF4AB6 /* header_icon@2x.png */; };
+		E914E9FE170A6E6E0050D7B9 /* header_icon_solid.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C84616F3E8AA00AF4AB6 /* header_icon_solid.png */; };
+		E914E9FF170A6E6E0050D7B9 /* header_icon_solid@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C84716F3E8AA00AF4AB6 /* header_icon_solid@2x.png */; };
+		E914EA00170A6E6E0050D7B9 /* AchievementsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E975C84D16F3F32F00AF4AB6 /* AchievementsViewController.xib */; };
+		E914EA01170A6E6E0050D7B9 /* ach_1.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C85116F3FE6D00AF4AB6 /* ach_1.png */; };
+		E914EA02170A6E6E0050D7B9 /* ach_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C85216F3FE6D00AF4AB6 /* ach_1@2x.png */; };
+		E914EA03170A6E6E0050D7B9 /* ach_5.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C85316F3FE6D00AF4AB6 /* ach_5.png */; };
+		E914EA04170A6E6E0050D7B9 /* ach_5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C85416F3FE6D00AF4AB6 /* ach_5@2x.png */; };
+		E914EA05170A6E6E0050D7B9 /* ach_10.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C85516F3FE6D00AF4AB6 /* ach_10.png */; };
+		E914EA06170A6E6E0050D7B9 /* ach_10@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C85616F3FE6D00AF4AB6 /* ach_10@2x.png */; };
+		E914EA07170A6E6E0050D7B9 /* ach_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C85716F3FE6D00AF4AB6 /* ach_bg.png */; };
+		E914EA08170A6E6E0050D7B9 /* ach_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C85816F3FE6D00AF4AB6 /* ach_bg@2x.png */; };
+		E914EA09170A6E6E0050D7B9 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = E915AE2416FBD99F000FC410 /* defaults.plist */; };
+		E914EA0A170A6E6E0050D7B9 /* CreateLotViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E915AE281700B6E0000FC410 /* CreateLotViewController.xib */; };
+		E914EA0B170A6E6E0050D7B9 /* AddLotViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E915AE301700CF4E000FC410 /* AddLotViewController.xib */; };
+		E914EA0D170A6E6E0050D7B9 /* check_in_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E98C13771702A44F00BD66F7 /* check_in_icon.png */; };
+		E914EA0E170A6E6E0050D7B9 /* check_in_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E98C13781702A44F00BD66F7 /* check_in_icon@2x.png */; };
+		E914EA0F170A6E6E0050D7B9 /* yellow_button_line_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = E98C13891703F42D00BD66F7 /* yellow_button_line_selected.png */; };
+		E914EA10170A6E6E0050D7B9 /* yellow_button_line_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E98C138A1703F42D00BD66F7 /* yellow_button_line_selected@2x.png */; };
+		E914EA11170A6E6E0050D7B9 /* yellow_button_line.png in Resources */ = {isa = PBXBuildFile; fileRef = E98C138B1703F42D00BD66F7 /* yellow_button_line.png */; };
+		E914EA12170A6E6E0050D7B9 /* yellow_button_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E98C138C1703F42D00BD66F7 /* yellow_button_line@2x.png */; };
+		E914EA13170A6E6E0050D7B9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E914E9B5170539690050D7B9 /* Default-568h@2x.png */; };
+		E914EA14170A6E6E0050D7B9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E914E9B7170539700050D7B9 /* Default@2x.png */; };
+		E914EA15170A6E6E0050D7B9 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E914E9B9170539750050D7B9 /* Default.png */; };
+		E914EA1D170A726C0050D7B9 /* defaults_dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = E914EA1C170A726C0050D7B9 /* defaults_dev.plist */; };
 		E915AE2316FBCA6A000FC410 /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E915AE2216FBCA6A000FC410 /* libFlurry.a */; };
 		E915AE2516FBD99F000FC410 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = E915AE2416FBD99F000FC410 /* defaults.plist */; };
 		E915AE291700B6E0000FC410 /* CreateLotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E915AE271700B6E0000FC410 /* CreateLotViewController.m */; };
@@ -20,7 +106,6 @@
 		E915AE321700CF4F000FC410 /* AddLotViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E915AE301700CF4E000FC410 /* AddLotViewController.xib */; };
 		E975C80C16F1A30800AF4AB6 /* LotsTabBarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C80B16F1A30800AF4AB6 /* LotsTabBarBackground@2x.png */; };
 		E975C80E16F1A39300AF4AB6 /* LotsTabBarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C80D16F1A39300AF4AB6 /* LotsTabBarBackground.png */; };
-		E975C81016F221A800AF4AB6 /* LotsTabBarSelectedBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C80F16F221A800AF4AB6 /* LotsTabBarSelectedBG@2x.png */; };
 		E975C81316F2274F00AF4AB6 /* LSCheckInCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E975C81216F2274F00AF4AB6 /* LSCheckInCell.m */; };
 		E975C81516F2275F00AF4AB6 /* LSCheckInCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E975C81416F2275F00AF4AB6 /* LSCheckInCell.xib */; };
 		E975C81816F24AEC00AF4AB6 /* back_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C81616F24AEC00AF4AB6 /* back_arrow.png */; };
@@ -56,7 +141,6 @@
 		E975C85E16F3FE6D00AF4AB6 /* ach_10@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C85616F3FE6D00AF4AB6 /* ach_10@2x.png */; };
 		E975C85F16F3FE6D00AF4AB6 /* ach_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C85716F3FE6D00AF4AB6 /* ach_bg.png */; };
 		E975C86016F3FE6D00AF4AB6 /* ach_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E975C85816F3FE6D00AF4AB6 /* ach_bg@2x.png */; };
-		E98C134F17021DF900BD66F7 /* shineMask.png in Resources */ = {isa = PBXBuildFile; fileRef = E98C134E17021DF900BD66F7 /* shineMask.png */; };
 		E98C13791702A44F00BD66F7 /* check_in_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E98C13771702A44F00BD66F7 /* check_in_icon.png */; };
 		E98C137A1702A44F00BD66F7 /* check_in_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E98C13781702A44F00BD66F7 /* check_in_icon@2x.png */; };
 		E98C137D1703C06F00BD66F7 /* LotFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = E98C137C1703C06F00BD66F7 /* LotFooterView.m */; };
@@ -102,6 +186,9 @@
 		E914E9B5170539690050D7B9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		E914E9B7170539700050D7B9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		E914E9B9170539750050D7B9 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		E914EA1A170A6E6E0050D7B9 /* lots_debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lots_debug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E914EA1B170A6E6F0050D7B9 /* lots_debug-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "lots_debug-Info.plist"; path = "/Users/Thomas/Development/lots/lots_ios/lots/lots_debug-Info.plist"; sourceTree = "<absolute>"; };
+		E914EA1C170A726C0050D7B9 /* defaults_dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaults_dev.plist; sourceTree = "<group>"; };
 		E915AE2116FBCA6A000FC410 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		E915AE2216FBCA6A000FC410 /* libFlurry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry.a; sourceTree = "<group>"; };
 		E915AE2416FBD99F000FC410 /* defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaults.plist; sourceTree = "<group>"; };
@@ -115,7 +202,6 @@
 		E915AE301700CF4E000FC410 /* AddLotViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddLotViewController.xib; sourceTree = "<group>"; };
 		E975C80B16F1A30800AF4AB6 /* LotsTabBarBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LotsTabBarBackground@2x.png"; path = "lots/LotsTabBarBackground@2x.png"; sourceTree = "<group>"; };
 		E975C80D16F1A39300AF4AB6 /* LotsTabBarBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LotsTabBarBackground.png; path = lots/LotsTabBarBackground.png; sourceTree = "<group>"; };
-		E975C80F16F221A800AF4AB6 /* LotsTabBarSelectedBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LotsTabBarSelectedBG@2x.png"; path = "lots/LotsTabBarSelectedBG@2x.png"; sourceTree = "<group>"; };
 		E975C81116F2274F00AF4AB6 /* LSCheckInCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSCheckInCell.h; sourceTree = "<group>"; };
 		E975C81216F2274F00AF4AB6 /* LSCheckInCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSCheckInCell.m; sourceTree = "<group>"; };
 		E975C81416F2275F00AF4AB6 /* LSCheckInCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSCheckInCell.xib; sourceTree = "<group>"; };
@@ -155,7 +241,6 @@
 		E975C85616F3FE6D00AF4AB6 /* ach_10@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ach_10@2x.png"; sourceTree = "<group>"; };
 		E975C85716F3FE6D00AF4AB6 /* ach_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ach_bg.png; sourceTree = "<group>"; };
 		E975C85816F3FE6D00AF4AB6 /* ach_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ach_bg@2x.png"; sourceTree = "<group>"; };
-		E98C134E17021DF900BD66F7 /* shineMask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shineMask.png; sourceTree = "<group>"; };
 		E98C13771702A44F00BD66F7 /* check_in_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_in_icon.png; sourceTree = "<group>"; };
 		E98C13781702A44F00BD66F7 /* check_in_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check_in_icon@2x.png"; sourceTree = "<group>"; };
 		E98C137B1703C06F00BD66F7 /* LotFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LotFooterView.h; sourceTree = "<group>"; };
@@ -216,6 +301,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E914E9D6170A6E6E0050D7B9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E914E9D7170A6E6E0050D7B9 /* MapKit.framework in Frameworks */,
+				E914E9D8170A6E6E0050D7B9 /* QuartzCore.framework in Frameworks */,
+				E914E9D9170A6E6E0050D7B9 /* CoreLocation.framework in Frameworks */,
+				E914E9DA170A6E6E0050D7B9 /* UIKit.framework in Frameworks */,
+				E914E9DB170A6E6E0050D7B9 /* Foundation.framework in Frameworks */,
+				E914E9DC170A6E6E0050D7B9 /* CoreGraphics.framework in Frameworks */,
+				E914E9DD170A6E6E0050D7B9 /* libPods.a in Frameworks */,
+				E914E9DE170A6E6E0050D7B9 /* libFlurry.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E9B2F08F16EE4C6100976D0E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -293,6 +393,7 @@
 			isa = PBXGroup;
 			children = (
 				E9B2F09216EE4C6100976D0E /* lots.app */,
+				E914EA1A170A6E6E0050D7B9 /* lots_debug.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -354,7 +455,9 @@
 				E915AE2016FBCA6A000FC410 /* Flurry */,
 				E9B2F11E16EFFD1700976D0E /* MBProgressHUD */,
 				E9B2F09D16EE4C6100976D0E /* lots-Info.plist */,
+				E914EA1B170A6E6F0050D7B9 /* lots_debug-Info.plist */,
 				E915AE2416FBD99F000FC410 /* defaults.plist */,
+				E914EA1C170A726C0050D7B9 /* defaults_dev.plist */,
 				E9B2F09E16EE4C6100976D0E /* InfoPlist.strings */,
 				E9B2F0A116EE4C6100976D0E /* main.m */,
 				E9B2F0A316EE4C6100976D0E /* lots-Prefix.pch */,
@@ -372,7 +475,6 @@
 				E98C138C1703F42D00BD66F7 /* yellow_button_line@2x.png */,
 				E98C13771702A44F00BD66F7 /* check_in_icon.png */,
 				E98C13781702A44F00BD66F7 /* check_in_icon@2x.png */,
-				E98C134E17021DF900BD66F7 /* shineMask.png */,
 				E975C85016F3FE5E00AF4AB6 /* achievements */,
 				E975C84616F3E8AA00AF4AB6 /* header_icon_solid.png */,
 				E975C84716F3E8AA00AF4AB6 /* header_icon_solid@2x.png */,
@@ -396,7 +498,6 @@
 				E975C81716F24AEC00AF4AB6 /* back_arrow@2x.png */,
 				E975C80D16F1A39300AF4AB6 /* LotsTabBarBackground.png */,
 				E975C80B16F1A30800AF4AB6 /* LotsTabBarBackground@2x.png */,
-				E975C80F16F221A800AF4AB6 /* LotsTabBarSelectedBG@2x.png */,
 				E9B2F0C916EE512F00976D0E /* fonts */,
 			);
 			name = lots_resources;
@@ -488,6 +589,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		E914E9BB170A6E6E0050D7B9 /* lots debug */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E914EA17170A6E6E0050D7B9 /* Build configuration list for PBXNativeTarget "lots debug" */;
+			buildPhases = (
+				E914E9BC170A6E6E0050D7B9 /* Sources */,
+				E914E9D6170A6E6E0050D7B9 /* Frameworks */,
+				E914E9DF170A6E6E0050D7B9 /* Resources */,
+				E914EA16170A6E6E0050D7B9 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "lots debug";
+			productName = lots;
+			productReference = E914EA1A170A6E6E0050D7B9 /* lots_debug.app */;
+			productType = "com.apple.product-type.application";
+		};
 		E9B2F09116EE4C6100976D0E /* lots */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E9B2F0C316EE4C6100976D0E /* Build configuration list for PBXNativeTarget "lots" */;
@@ -528,11 +647,72 @@
 			projectRoot = "";
 			targets = (
 				E9B2F09116EE4C6100976D0E /* lots */,
+				E914E9BB170A6E6E0050D7B9 /* lots debug */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E914E9DF170A6E6E0050D7B9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E914E9E0170A6E6E0050D7B9 /* InfoPlist.strings in Resources */,
+				E914E9E1170A6E6E0050D7B9 /* FirstViewController.xib in Resources */,
+				E914E9E2170A6E6E0050D7B9 /* SecondViewController.xib in Resources */,
+				E914E9E3170A6E6E0050D7B9 /* didact_gothic.ttf in Resources */,
+				E914E9E4170A6E6E0050D7B9 /* CheckInViewController.xib in Resources */,
+				E914E9E5170A6E6E0050D7B9 /* LSExploreLotCell.xib in Resources */,
+				E914E9E6170A6E6E0050D7B9 /* LotDetailViewController.xib in Resources */,
+				E914E9E7170A6E6E0050D7B9 /* LotsTabBarBackground@2x.png in Resources */,
+				E914E9E8170A6E6E0050D7B9 /* LotsTabBarBackground.png in Resources */,
+				E914E9EA170A6E6E0050D7B9 /* LSCheckInCell.xib in Resources */,
+				E914E9EB170A6E6E0050D7B9 /* back_arrow.png in Resources */,
+				E914E9EC170A6E6E0050D7B9 /* back_arrow@2x.png in Resources */,
+				E914E9ED170A6E6E0050D7B9 /* Icon.png in Resources */,
+				E914E9EE170A6E6E0050D7B9 /* Icon@2x.png in Resources */,
+				E914E9EF170A6E6E0050D7B9 /* MapLotViewController.xib in Resources */,
+				E914E9F0170A6E6E0050D7B9 /* gray_button.png in Resources */,
+				E914E9F1170A6E6E0050D7B9 /* gray_button@2x.png in Resources */,
+				E914E9F2170A6E6E0050D7B9 /* magnifier.png in Resources */,
+				E914E9F3170A6E6E0050D7B9 /* magnifier@2x.png in Resources */,
+				E914E9F4170A6E6E0050D7B9 /* flag.png in Resources */,
+				E914E9F5170A6E6E0050D7B9 /* flag@2x.png in Resources */,
+				E914E9F6170A6E6E0050D7B9 /* navBG.png in Resources */,
+				E914E9F7170A6E6E0050D7B9 /* navBG@2x.png in Resources */,
+				E914E9F8170A6E6E0050D7B9 /* car@2x.png in Resources */,
+				E914E9F9170A6E6E0050D7B9 /* car.png in Resources */,
+				E914E9FA170A6E6E0050D7B9 /* navCenter.png in Resources */,
+				E914E9FB170A6E6E0050D7B9 /* navCenter@2x.png in Resources */,
+				E914E9FC170A6E6E0050D7B9 /* header_icon.png in Resources */,
+				E914E9FD170A6E6E0050D7B9 /* header_icon@2x.png in Resources */,
+				E914E9FE170A6E6E0050D7B9 /* header_icon_solid.png in Resources */,
+				E914E9FF170A6E6E0050D7B9 /* header_icon_solid@2x.png in Resources */,
+				E914EA00170A6E6E0050D7B9 /* AchievementsViewController.xib in Resources */,
+				E914EA01170A6E6E0050D7B9 /* ach_1.png in Resources */,
+				E914EA02170A6E6E0050D7B9 /* ach_1@2x.png in Resources */,
+				E914EA03170A6E6E0050D7B9 /* ach_5.png in Resources */,
+				E914EA04170A6E6E0050D7B9 /* ach_5@2x.png in Resources */,
+				E914EA05170A6E6E0050D7B9 /* ach_10.png in Resources */,
+				E914EA06170A6E6E0050D7B9 /* ach_10@2x.png in Resources */,
+				E914EA07170A6E6E0050D7B9 /* ach_bg.png in Resources */,
+				E914EA08170A6E6E0050D7B9 /* ach_bg@2x.png in Resources */,
+				E914EA09170A6E6E0050D7B9 /* defaults.plist in Resources */,
+				E914EA0A170A6E6E0050D7B9 /* CreateLotViewController.xib in Resources */,
+				E914EA0B170A6E6E0050D7B9 /* AddLotViewController.xib in Resources */,
+				E914EA0D170A6E6E0050D7B9 /* check_in_icon.png in Resources */,
+				E914EA0E170A6E6E0050D7B9 /* check_in_icon@2x.png in Resources */,
+				E914EA0F170A6E6E0050D7B9 /* yellow_button_line_selected.png in Resources */,
+				E914EA10170A6E6E0050D7B9 /* yellow_button_line_selected@2x.png in Resources */,
+				E914EA11170A6E6E0050D7B9 /* yellow_button_line.png in Resources */,
+				E914EA12170A6E6E0050D7B9 /* yellow_button_line@2x.png in Resources */,
+				E914EA13170A6E6E0050D7B9 /* Default-568h@2x.png in Resources */,
+				E914EA14170A6E6E0050D7B9 /* Default@2x.png in Resources */,
+				E914EA15170A6E6E0050D7B9 /* Default.png in Resources */,
+				E914EA1D170A726C0050D7B9 /* defaults_dev.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E9B2F09016EE4C6100976D0E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -546,7 +726,6 @@
 				E9B2F13B16F172C700976D0E /* LotDetailViewController.xib in Resources */,
 				E975C80C16F1A30800AF4AB6 /* LotsTabBarBackground@2x.png in Resources */,
 				E975C80E16F1A39300AF4AB6 /* LotsTabBarBackground.png in Resources */,
-				E975C81016F221A800AF4AB6 /* LotsTabBarSelectedBG@2x.png in Resources */,
 				E975C81516F2275F00AF4AB6 /* LSCheckInCell.xib in Resources */,
 				E975C81816F24AEC00AF4AB6 /* back_arrow.png in Resources */,
 				E975C81916F24AEC00AF4AB6 /* back_arrow@2x.png in Resources */,
@@ -581,7 +760,6 @@
 				E915AE2516FBD99F000FC410 /* defaults.plist in Resources */,
 				E915AE2A1700B6E0000FC410 /* CreateLotViewController.xib in Resources */,
 				E915AE321700CF4F000FC410 /* AddLotViewController.xib in Resources */,
-				E98C134F17021DF900BD66F7 /* shineMask.png in Resources */,
 				E98C13791702A44F00BD66F7 /* check_in_icon.png in Resources */,
 				E98C137A1702A44F00BD66F7 /* check_in_icon@2x.png in Resources */,
 				E98C138D1703F42D00BD66F7 /* yellow_button_line_selected.png in Resources */,
@@ -611,9 +789,55 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
 		};
+		E914EA16170A6E6E0050D7B9 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E914E9BC170A6E6E0050D7B9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E914E9BD170A6E6E0050D7B9 /* main.m in Sources */,
+				E914E9BE170A6E6E0050D7B9 /* AppDelegate.m in Sources */,
+				E914E9BF170A6E6E0050D7B9 /* FirstViewController.m in Sources */,
+				E914E9C0170A6E6E0050D7B9 /* SecondViewController.m in Sources */,
+				E914E9C1170A6E6E0050D7B9 /* Theme.m in Sources */,
+				E914E9C2170A6E6E0050D7B9 /* RITTheme.m in Sources */,
+				E914E9C3170A6E6E0050D7B9 /* AFLotsAPIClient.m in Sources */,
+				E914E9C4170A6E6E0050D7B9 /* LocationManager.m in Sources */,
+				E914E9C5170A6E6E0050D7B9 /* Notifications.m in Sources */,
+				E914E9C6170A6E6E0050D7B9 /* ExploreLots.m in Sources */,
+				E914E9C7170A6E6E0050D7B9 /* MBProgressHUD.m in Sources */,
+				E914E9C8170A6E6E0050D7B9 /* CheckInViewController.m in Sources */,
+				E914E9C9170A6E6E0050D7B9 /* LotAnnotation.m in Sources */,
+				E914E9CA170A6E6E0050D7B9 /* CheckInLot.m in Sources */,
+				E914E9CB170A6E6E0050D7B9 /* LSExploreLotCell.m in Sources */,
+				E914E9CC170A6E6E0050D7B9 /* LotDetailViewController.m in Sources */,
+				E914E9CD170A6E6E0050D7B9 /* LSCheckInCell.m in Sources */,
+				E914E9CE170A6E6E0050D7B9 /* LotMapViewController.m in Sources */,
+				E914E9CF170A6E6E0050D7B9 /* MapLotViewController.m in Sources */,
+				E914E9D0170A6E6E0050D7B9 /* AchievementsViewController.m in Sources */,
+				E914E9D1170A6E6E0050D7B9 /* CreateLotViewController.m in Sources */,
+				E914E9D2170A6E6E0050D7B9 /* WildcardGestureRecognizer.m in Sources */,
+				E914E9D3170A6E6E0050D7B9 /* AddLotViewController.m in Sources */,
+				E914E9D4170A6E6E0050D7B9 /* LotFooterView.m in Sources */,
+				E914E9D5170A6E6E0050D7B9 /* LotsCommon.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E9B2F08E16EE4C6100976D0E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -676,6 +900,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E914EA18170A6E6E0050D7B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4AD52480A6C54F208D21A4F7 /* Pods.xcconfig */;
+			buildSettings = {
+				BUNDLE_DISPLAY_NAME_SUFFIX = Dev;
+				BUNDLE_ID_SUFFIX = .dev;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "lots/lots-Prefix.pch";
+				HEADER_SEARCH_PATHS = "${PODS_HEADERS_SEARCH_PATHS}";
+				INFOPLIST_FILE = "lots_debug-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)",
+					"\"$(SRCROOT)/lots/Flurry\"",
+				);
+				PRODUCT_NAME = lots_debug;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E914EA19170A6E6E0050D7B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4AD52480A6C54F208D21A4F7 /* Pods.xcconfig */;
+			buildSettings = {
+				BUNDLE_DISPLAY_NAME_SUFFIX = Dev;
+				BUNDLE_ID_SUFFIX = .dev;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "lots/lots-Prefix.pch";
+				HEADER_SEARCH_PATHS = "${PODS_HEADERS_SEARCH_PATHS}";
+				INFOPLIST_FILE = "lots_debug-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)",
+					"\"$(SRCROOT)/lots/Flurry\"",
+				);
+				PRODUCT_NAME = lots_debug;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 		E9B2F0C116EE4C6100976D0E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -736,6 +998,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4AD52480A6C54F208D21A4F7 /* Pods.xcconfig */;
 			buildSettings = {
+				BUNDLE_DISPLAY_NAME_SUFFIX = tom;
+				BUNDLE_ID_SUFFIX = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "lots/lots-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${PODS_HEADERS_SEARCH_PATHS}";
@@ -753,6 +1017,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4AD52480A6C54F208D21A4F7 /* Pods.xcconfig */;
 			buildSettings = {
+				BUNDLE_DISPLAY_NAME_SUFFIX = tom;
+				BUNDLE_ID_SUFFIX = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "lots/lots-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${PODS_HEADERS_SEARCH_PATHS}";
@@ -769,6 +1035,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E914EA17170A6E6E0050D7B9 /* Build configuration list for PBXNativeTarget "lots debug" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E914EA18170A6E6E0050D7B9 /* Debug */,
+				E914EA19170A6E6E0050D7B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E9B2F08D16EE4C6100976D0E /* Build configuration list for PBXProject "lots" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

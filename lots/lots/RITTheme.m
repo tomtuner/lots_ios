@@ -12,7 +12,7 @@
 
 - (UIColor *)mainColor
 {
-    return [self mainWhiteColor];
+    return [self mainGrayColor];
 }
 
 - (UIColor *)highlightColor
@@ -22,7 +22,7 @@
 
 - (UIColor *)shadowColor
 {
-    return [UIColor darkGrayColor];
+    return [self mainWhiteColor];
 }
 
 - (UIColor *)backgroundColor
@@ -93,7 +93,7 @@
 
 - (CGSize)shadowOffset
 {
-    return CGSizeMake(1.0, 1.0);
+    return CGSizeMake(0.5, 0.5);
 }
 
 - (UIImage *)topShadow

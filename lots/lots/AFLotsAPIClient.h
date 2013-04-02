@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "AFHTTPClient.h"
 
+#define kAFLotsAPIBaseURLString @"http://www.occupylots.com/lots/index.php/lots/"
+
 @interface AFLotsAPIClient : AFHTTPClient
 
 + (AFLotsAPIClient *)sharedClient;

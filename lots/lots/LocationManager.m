@@ -106,6 +106,8 @@ static BOOL initialized = NO;
         NSLog(@"Running in simulator, simulate Latitude: %f Longitude: %f", SIMULATE_LATITUDE, SIMULATE_LONGITUDE);
         latitude = SIMULATE_LATITUDE;
         longitude = SIMULATE_LONGITUDE;
+        [[NSNotificationCenter defaultCenter] postNotificationName:LSLocationManagerDidUpdateLocationNotification object: nil];
+
     #else
         [locationManager startUpdatingLocation];
     #endif

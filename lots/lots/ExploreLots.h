@@ -34,4 +34,6 @@
 
 - (id)initWithAttributes:(NSDictionary *)attributes;
 + (void)globalExploreLotsWithBlock:(void (^)(NSArray *lots, NSError *error))block;
++ (void)globalCreateLotWithLotName:(NSString *) name withLatitude:(float) latitude withLongitude:(float) longitude withBlock:(void (^)(NSArray *lot, NSError *error))block;
+
 @end

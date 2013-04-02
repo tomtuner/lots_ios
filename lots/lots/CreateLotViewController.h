@@ -10,7 +10,8 @@
 #import <MapKit/MapKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import "AddLotViewController.h"
+#import "Theme.h"
 
-@interface CreateLotViewController : UIViewController <LSCreateLotDelegate, UITextFieldDelegate>
+@interface CreateLotViewController : UIViewController <LSCreateLotDelegate, UITextFieldDelegate, UIAlertViewDelegate>
 
 @end

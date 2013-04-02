@@ -64,6 +64,34 @@
                       }];
 }
 
++ (void)globalCreateLotWithLotName:(NSString *) name withLatitude:(float) latitude withLongitude:(float) longitude withBlock:(void (^)(NSArray *lot, NSError *error))block {
+    
+    NSDictionary *paramDict = [NSDictionary dictionaryWithObjects:@[name,
+                                                                    [NSNumber numberWithFloat:latitude],
+                               [NSNumber numberWithFloat:longitude]]
+                                                          forKeys:@[@"name", @"latitude", @"longitude"]];
+    
+    AFLotsAPIClient *networkingClient = [AFLotsAPIClient sharedClient];
+    [networkingClient postPath:[NSString stringWithFormat:@"%@/create/", kAFLotsAPIBaseURLString]
+                    parameters:paramDict
+                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                           NSLog(@"Success");
+                           NSLog(@"Response: %@", responseObject);
+                           NSArray *lotsFromResponse = responseObject;
+                           
+                           if (block) {
+                               block([NSArray arrayWithArray:lotsFromResponse], nil);
+                           }
+                       }
+                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                           NSLog(@"Fail");
+                           NSLog(@"%@", [error localizedDescription]);
+                           if (block) {
+                               block([NSArray array], error);
+                           }
+                       }];
+}
+
 - (id)initWithCoder:(NSCoder *)coder
 {
     self = [super init];

@@ -54,6 +54,10 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
     return self;
 }
 
+-(NSUInteger) supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -92,7 +96,7 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
     pulseAnimation.repeatCount = 1;
     [_titleView.layer addAnimation:pulseAnimation forKey:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceDidRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceDidRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
 }
 
 - (void) addCheckInButton
@@ -239,35 +243,17 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
 
 - (void) refreshLots
 {
-    /*
-    NSDictionary *paramDict = [NSDictionary dictionaryWithObjects:@[[NSNumber numberWithFloat:[[LocationManager sharedLocationManager] latitude]],
-                               [NSNumber numberWithFloat:[[LocationManager sharedLocationManager] longitude]]]
-                                                          forKeys:@[@"latitude", @"longitude"]];
-    
-    AFLotsAPIClient *networkingClient = [AFLotsAPIClient sharedClient];
-    [networkingClient getPath:nil
-                   parameters:paramDict
-                      success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                          NSLog(@"Success");
-                          NSLog(@"Response: %@", responseObject);
-                      }
-                      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                          NSLog(@"Fail");
-                          NSLog(@"%@", [error localizedDescription]);
-                      }];*/
     [ExploreLots globalExploreLotsWithBlock:^(NSArray *lots, NSError *error) {
        
         if (!error) {
-//            NSLog(@"In Lots");
             [lotArray removeAllObjects];
             for( NSObject *lot in lots ) {
 //                NSLog(@"Object description: %@", [lot description]);
                 [lotArray addObject:lot];
             }
             [[self lotExploreTable] reloadData];
-            
             [self checkShouldShowFooterView];
-            
+
             // Save our new scans out to the archive file
             NSString *documentsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                                           NSUserDomainMask, YES) objectAtIndex:0];
@@ -282,13 +268,12 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
 -(void) checkShouldShowFooterView
 {
     if (lotArray.count == 0) {
-        self.lotFooterView.hidden = NO;
+        self.lotExploreTable.tableFooterView = self.lotFooterView;
         [_checkInBarButton setEnabled:NO];
 //        self.navigationItem.rightBarButtonItem.enabled = NO;
     }else {
-        self.lotFooterView.hidden = YES;
+        self.lotExploreTable.tableFooterView = nil;
         [_checkInBarButton setEnabled:YES];
-//        self.navigationItem.rightBarButtonItem.enabled = YES;
     }
 }
 
@@ -480,18 +465,6 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
 	return [lotArray count];
 }
 
-- (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    
-    // Return a negligibly small value that way viewForFooterInSection method loads
-    return 0.000001f;
-}
-
-- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    
-    // Return a negligibly small value that way viewForFooterInSection method loads
-    return 0.000001f;
-}
-
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -593,7 +566,6 @@ NSString *const LSAllLotsArchiveString = @"LSAllLotsArchieveString";
     }else {
         customCell.lotOccupancy.text = [NSString stringWithFormat:@"N/A"];
     }
-        
     customCell.lotDistance.text = [NSString stringWithFormat:@"%.2f mi", (exLots.distance * 0.621371)];
 //    cell.detailTextLabel.text = [[NSNumber numberWithFloat:exLots.averageOccupancy] stringValue];
 //    [cell setBackgroundColor:[UIColor colorWithRed:0.8784313725 green:0.8784313725 blue:0.7764705882 alpha:1.0]];
