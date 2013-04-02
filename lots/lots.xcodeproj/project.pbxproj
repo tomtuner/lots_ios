@@ -1000,6 +1000,7 @@
 			buildSettings = {
 				BUNDLE_DISPLAY_NAME_SUFFIX = tom;
 				BUNDLE_ID_SUFFIX = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Thomas Demeo";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "lots/lots-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${PODS_HEADERS_SEARCH_PATHS}";
@@ -1009,6 +1010,7 @@
 					"\"$(SRCROOT)/lots/Flurry\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "77BFB2AE-A528-4886-A76B-A84E7E64D3A5";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1019,6 +1021,7 @@
 			buildSettings = {
 				BUNDLE_DISPLAY_NAME_SUFFIX = tom;
 				BUNDLE_ID_SUFFIX = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Thomas Demeo";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "lots/lots-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${PODS_HEADERS_SEARCH_PATHS}";
@@ -1028,6 +1031,7 @@
 					"\"$(SRCROOT)/lots/Flurry\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "77BFB2AE-A528-4886-A76B-A84E7E64D3A5";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
