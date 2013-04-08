@@ -998,7 +998,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4AD52480A6C54F208D21A4F7 /* Pods.xcconfig */;
 			buildSettings = {
-				BUNDLE_DISPLAY_NAME_SUFFIX = tom;
+				BUNDLE_DISPLAY_NAME_SUFFIX = "";
 				BUNDLE_ID_SUFFIX = "";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Thomas Demeo";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1019,7 +1019,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4AD52480A6C54F208D21A4F7 /* Pods.xcconfig */;
 			buildSettings = {
-				BUNDLE_DISPLAY_NAME_SUFFIX = tom;
+				BUNDLE_DISPLAY_NAME_SUFFIX = "";
 				BUNDLE_ID_SUFFIX = "";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Thomas Demeo";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
